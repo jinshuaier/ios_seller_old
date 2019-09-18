@@ -1,0 +1,40 @@
+//
+//  TCServerSecret.h
+//  某某
+//
+//  Created by apple on 16/3/16.
+//  Copyright © 2016年 moumou. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface TCServerSecret : NSObject
+@property (nonatomic, strong) NSString *appapinterface;
+@property (nonatomic, strong) NSString *approomno;
+
+- (NSString *)md5:(NSString *)str;
+- (NSString *)md52:(NSString *)str;
+
+//sha1加密
+- (NSString *)sha1:(NSString *)str;
++ (NSString *)singstr;
+
+//线上
++ (NSString *)loginAndRegisterSecretOnline:(NSString *)num;
+//线下
++ (NSString *)loginAndRegisterSecretOffline:(NSString *)num;
++ (NSString *)loginAndRegisterSecret2:(NSString *)num;
++(NSString *)loginAndRegisterSecret4:(NSString *)num;
++(NSString *)loginAndRegisterSecret:(NSString *)num;
+
+//登录
++(NSString *)loginStr:(NSDictionary*)dict;
+
+//拼接字符串
++(NSString *)signStr:(NSDictionary*)dict;
+
+//拼接字典
++ (NSDictionary *)report:(NSDictionary *)dic;
+
+//+ (NSString *)loginAndRegisterSecret3:(NSString *)num;
+@end

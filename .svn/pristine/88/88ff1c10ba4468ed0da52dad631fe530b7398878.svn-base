@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TCseTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="位置位置位置位置位置位置位置位置位置位置位置位置" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8K-0P-EyI">
+                        <rect key="frame" x="8" y="4" width="222" height="35"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqb-9h-H6d">
+                        <rect key="frame" x="238" y="11" width="74" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="74" id="NbZ-7s-9Th"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="重新定位" image="dw.png">
+                            <color key="titleColor" red="0.060182479611150419" green="0.47104383489512058" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Oqb-9h-H6d" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Ioh-O9-iFt"/>
+                    <constraint firstItem="v8K-0P-EyI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Onh-ye-244"/>
+                    <constraint firstAttribute="bottom" secondItem="v8K-0P-EyI" secondAttribute="bottom" constant="4" id="cJG-vh-jmn"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Oqb-9h-H6d" secondAttribute="bottom" constant="2" id="iVo-ZF-zPd"/>
+                    <constraint firstItem="Oqb-9h-H6d" firstAttribute="leading" secondItem="v8K-0P-EyI" secondAttribute="trailing" constant="8" id="sNJ-hS-jps"/>
+                    <constraint firstItem="Oqb-9h-H6d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="ulZ-3z-bQ9"/>
+                    <constraint firstItem="v8K-0P-EyI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="y08-mG-34S"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btn" destination="Oqb-9h-H6d" id="06w-Ub-UkD"/>
+                <outlet property="titles" destination="v8K-0P-EyI" id="C2p-gh-CeT"/>
+            </connections>
+            <point key="canvasLocation" x="443" y="313"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="dw.png" width="16" height="16"/>
+    </resources>
+</document>

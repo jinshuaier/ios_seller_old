@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/&#x91c7;&#x8d2d;/&#x91c7;&#x8d2d;&#x9996;&#x9875;/TCCaiGouViewController.m"
+            timestampString = "513159172.70777"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "-request:andstatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/&#x91c7;&#x8d2d;/&#x91c7;&#x8d2d;&#x9996;&#x9875;/TCCaiGouViewController.m"
+            timestampString = "513159181.180023"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "-request:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/&#x91c7;&#x8d2d;/&#x8ba2;&#x5355;/TCDingDanViewController.m"
+            timestampString = "515559026.607803"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-request"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/&#x91c7;&#x8d2d;/&#x8ba2;&#x5355;/TCDingDanViewController.m"
+            timestampString = "515577286.974161"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-request"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/FirstPage/ViewController/ChildViewController/TCFinshedViewController.m"
+            timestampString = "537270330.924672"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/TCNewChangeViewController.m"
+            timestampString = "536683385.093964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "-commit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/FirstPage/ViewController/ChildViewController/TCNoDisViewController.m"
+            timestampString = "518682310.106431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/FirstPage/ViewController/ChildViewController/TCNoDisViewController.m"
+            timestampString = "518682310.106431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/&#x91c7;&#x8d2d;/&#x91c7;&#x8d2d;&#x9996;&#x9875;/&#x6536;&#x8d27;&#x5730;&#x5740;/TCAdressListViewController.m"
+            timestampString = "524472464.299134"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/Login/TCChangeViewController.m"
+            timestampString = "556450676.800843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "-createfindQuest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/Login/TCChangeViewController.m"
+            timestampString = "556450676.801035"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-createfindQuest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/Login/TCSJTJViewController.m"
+            timestampString = "556450676.801195"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/Login/TCSJTJViewController.m"
+            timestampString = "556450676.801318"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/FirstPage/ViewController/ChildViewController/cell/TCListModel.m"
+            timestampString = "531221034.461101"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-status:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/controller/TCAllSellViewController.m"
+            timestampString = "532842129.361955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-request:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/OrderBalan&#xff08;&#x8ba2;&#x5355;&#x5956;&#x91d1;&#xff09;/TCOrderBalanViewController.m"
+            timestampString = "536919981.625011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-request:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/Main/TCProgressHUD.m"
+            timestampString = "537355118.5309"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-showWithMessage:duration:pushing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/controller/TCShopEditViewController.m"
+            timestampString = "552288159.418732"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "777"
+            endingLineNumber = "777"
+            landmarkName = "-commit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/controller/TCShopEditViewController.m"
+            timestampString = "552288161.9057209"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "785"
+            endingLineNumber = "785"
+            landmarkName = "-commit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZImageManager.m"
+            timestampString = "553514397.5565881"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-savePhotoWithImage:location:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZImageManager.m"
+            timestampString = "553514411.870809"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-savePhotoWithImage:location:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZImageManager.m"
+            timestampString = "553514415.024133"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "-savePhotoWithImage:location:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZImageManager.m"
+            timestampString = "553514416.386718"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-savePhotoWithImage:location:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZImagePickerController.m"
+            timestampString = "554971929.51823"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZImagePickerController.m"
+            timestampString = "554971929.519021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZPhotoPickerController.m"
+            timestampString = "554971590.989573"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZPhotoPreviewController.m"
+            timestampString = "554981353.418411"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
+            landmarkName = "-refreshNaviBarAndBottomBarState"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZPhotoPreviewController.m"
+            timestampString = "554981353.4188761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
+            landmarkName = "-showPhotoBytes"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x5e97;&#x94fa;&#x56fe;&#x7247;/seletedImage/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZPhotoPreviewController.m"
+            timestampString = "554981353.419088"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
+            landmarkName = "-doneButtonClick"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x4e0a;&#x4f20;&#x8425;&#x4e1a;&#x6267;&#x7167;/TCLicenseViewController.m"
+            timestampString = "557742747.999735"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-creatUI"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x4e0a;&#x4f20;&#x8425;&#x4e1a;&#x6267;&#x7167;/TCLicenseViewController.m"
+            timestampString = "557742747.999805"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-imageQuest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x4e0a;&#x4f20;&#x8425;&#x4e1a;&#x6267;&#x7167;/TCLicenseViewController.m"
+            timestampString = "557742747.9998569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-imageQuest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

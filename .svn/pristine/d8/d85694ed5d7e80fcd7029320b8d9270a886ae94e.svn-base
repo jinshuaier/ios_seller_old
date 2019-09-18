@@ -1,0 +1,151 @@
+//
+//  TCGX.pch
+//  顺道嘉商家版
+//
+//  Created by Macx on 16/7/27.
+//  Copyright © 2016年 北京同创共享网络科技有限公司. All rights reserved.
+//
+
+#ifndef TCGX_pch
+#define TCGX_pch
+
+#import "UIView+Extension.h"
+#import "UIBarButtonItem+Extension.h"
+#import "TitleButton.h"
+#import "TCAFNetworking.h"
+#import "TCServerSecret.h"
+#import "AFNetworking.h"
+#import "SVProgressHUD.h"
+#import "TCGetDeviceId.h"
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+#import "TCNetworking.h"
+#import "TCHubView.h"
+#import "TCProgressHUD.h"
+#import "UIImage+fixOrientation.h"
+#import "FMDB.h"
+//全局背景颜色
+#import "TCBackView.h"
+//极光推送
+#import "JPUSHService.h"
+#import <AdSupport/AdSupport.h>
+//签名加密
+#import "NSString+Algorithm.h"
+//签名加密
+#import "TCGetTime.h"
+//正则表达式
+#import "BSUtils.h"
+//指示器
+#import "BQActivityView.h"
+#import "UILabel+TClabel.h"  //label的封装
+
+#import "Pingpp.h"  //pingpp
+//高德地图
+#import <MAMapKit/MAMapKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapSearchKit/AMapSearchAPI.h>
+
+//#import "MJExtension.h"
+
+//友盟数据APPKEY
+#define UMengKey @"58f827e682b635376d0018fd"
+// 屏幕适配时需要的宏
+#define WIDHT [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+//比例
+#define WIDHTSCALE  [UIScreen mainScreen].bounds.size.width/375.0
+#define HEIGHTSCALE  [UIScreen mainScreen].bounds.size.height/667.0
+
+//唯一的标识token
+#define Token @"f53699f2fd2956bb9d8fa27f5b37c83e"
+//极光推送
+#define APIKEY @"23a4f0a1acc82805a4e40126"
+#define SECRETKEY @"3f7817083dfd6cc8bae2547d"
+#define registrationIDs @"101d85590947971dc0d"
+
+/**
+ *  判断手机类别
+ */
+#define SCREEN_MAX_LENGTH (MAX(WIDHT, HEIGHT))
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPAD     [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
+#define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+//设备高度
+#define IS_IPHONE_4_OR_LESS 480.0
+#define IS_IPHONE_5  568.0
+#define IS_IPHONE_6  667.0
+#define IS_IPHONE_6P 736.0
+#define IS_iOS8 ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
+
+
+//Color
+#define TCUIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue &0xFF00) >>8))/255.0 blue:((float)(rgbValue &0xFF))/255.0 alpha:1.0]
+#define NEWMAINCOLOR TCUIColorFromRGB(0xF5F5F5)
+#define RGB(r, g, b)    [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:1.0]
+#define Gary RGB(236, 236, 236)
+
+#define ViewColor [UIColor colorWithRed:242.0 / 255.0 green:242.0 / 255.0 blue:242.0 / 255.0 alpha:1.0]
+#define backFontColor [UIColor colorWithRed:33.0 / 255.0 green:33.0 / 255.0 blue:33.0 / 255.0 alpha:1.0]
+#define FontColor [UIColor colorWithRed:77 / 255.0 green:77 / 255.0 blue:77 / 255.0 alpha:1.0]
+//店铺管理
+#define shopColor [UIColor colorWithRed:51 / 255.0 green:51 / 255.0 blue:51 / 255.0 alpha:1.0]
+#define RedColor [UIColor colorWithRed:255.0 / 255.0 green:85 / 255.0 blue:0 / 255.0 alpha:1.0]
+#define Color  [UIColor colorWithRed:83.0/ 255.0 green:195.0 / 255.0 blue:195.0 / 255.0 alpha:1.0]//主色调
+#define Grayline [UIColor colorWithRed:180/255.0f green:180/255.0f blue:180/255.0f alpha:.3]//线的色调
+#define ColorLine  [UIColor colorWithRed:204.0 / 255.0 green:204.0 / 255.0 blue:204.0 / 255.0 alpha:1]//主色调
+#define NaviTitleColor [UIColor colorWithRed:102.0 / 255 green:68.0 / 255 blue:0.0 / 255 alpha:1]//导航栏字体颜色
+#define BtnTitleColor  [UIColor colorWithRed:51.0 / 255 green:51.0 / 255 blue:51.0 / 255 alpha:1]//按钮上字体颜色 （偏黑）
+#define SmallTitleColor [UIColor colorWithRed:102.0 / 255 green:102.0 / 255 blue:102.0 / 255 alpha:1]//小标题颜色（偏灰色）
+#define btnColors [UIColor colorWithRed:0.0 / 255 green:211.0 / 255 blue:206.0 / 255 alpha:1]//按钮颜色 青蓝色
+#define backGgray [UIColor colorWithRed:242.0 / 255 green:242.0 / 255 blue:242.0 / 255 alpha:1]//背景颜色  淡灰色
+#define mainColor [UIColor colorWithRed:0 / 255.0 green:134.0 / 255.0 blue:206.0 / 255.0 alpha:1.0]
+//背景主颜色
+#define TCBgColor TCUIColorFromRGB(0xF5F5F5)
+//导航栏
+#define TCNavColor TCUIColorFromRGB(0x53C3C3)
+//lineView
+#define TCLineColor TCUIColorFromRGB(0xEDEDED)
+
+//数据库路径
+#define SqlPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingPathComponent:@"ShopCar.sqlite"]
+
+#define SGSearchPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"ShopGoodsSearchhistories.plist"]
+
+#define KHistorySearchPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"PYSearchhistories.plist"]
+
+// Status bar height.
+#define  StatusBarHeight      (iPhoneX ? 44.f : 20.f)
+
+
+// Navigation bar height.
+#define  NavigationBarHeight  44.f
+
+// Tabbar height.
+#define  TabbarHeight         (iPhoneX ? (49.f+34.f) : 49.f)
+
+// Tabbar safe bottom margin.
+#define  TabbarSafeBottomMargin         (iPhoneX ? 34.f : 0.f)
+
+// Status bar & navigation bar height.
+#define  StatusBarAndNavigationBarHeight  (iPhoneX ? 88.f : 64.f)
+
+#define ViewSafeAreInsets(view) ({UIEdgeInsets insets; if(@available(iOS 11.0, *)) {insets = view.safeAreaInsets;} else {insets = UIEdgeInsetsZero;} insets;})
+
+#define AdjustsScrollViewInsetNever(controller,view) if(@available(iOS 11.0, *)) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;} else if([controller isKindOfClass:[UIViewController class]]) {controller.automaticallyAdjustsScrollViewInsets = false;}
+
+//此处是防止导入AFNetWorking时报错
+
+#ifndef TARGET_OS_IOS
+
+#define TARGET_OS_IOS TARGET_OS_IPHONE
+
+#endif
+
+#ifndef TARGET_OS_WATCH
+
+#define TARGET_OS_WATCH 0
+
+#endif
+#endif

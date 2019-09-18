@@ -1,0 +1,1267 @@
+//
+//  TCCreateShopsViewController.m
+//  顺道嘉商家版
+//
+//  Created by 某某 on 16/8/9.
+//  Copyright © 2016年 北京同创共享网络科技有限公司. All rights reserved.
+//
+
+#import "TCCreateShopsViewController.h"
+#import "TCDingweiViewController.h"
+#import "AFNetworking.h"
+#import "SVProgressHUD.h"
+#import "TCServerSecret.h"
+#import "TCShopManagerViewController.h"
+#import "TCTabBarViewController.h"
+#import "TCshopStyleViewController.h"
+#import "TCZiZhiInfoViewController.h"
+#import "TCHtmlViewController.h"
+
+@interface TCCreateShopsViewController ()<UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate,UIGestureRecognizerDelegate>
+@property (nonatomic, strong) UIScrollView *mainScrollview;
+@property (nonatomic, strong) UIView *topView;
+@property (nonatomic, strong) UIImageView *headerIm;//头像
+@property (nonatomic, strong) UITextField *nametf;//店铺名称
+@property (nonatomic, strong) UITextField *styletf;//店铺类型
+@property (nonatomic, strong) UITextField *addtf;//店铺店址
+@property (nonatomic, strong) UITextField *addtf2;
+@property (nonatomic, strong) UITextField *dianzhangtf;//指定店长
+@property (nonatomic, strong) UITextField *phonenum;//店铺电话
+@property (nonatomic, strong) UITextField *dianyuantf;//指定店员
+@property (nonatomic, strong) UITextField *starttf;//开始时间
+@property (nonatomic, strong) UITextField *stoptf;//结束时间
+@property (nonatomic, strong) UITextField *qisongtf;//起送价
+@property (nonatomic, strong) UITextField *peisongtf;//配送价
+@property (nonatomic, strong) UISegmentedControl *seg1;//是否开放营业
+@property (nonatomic, strong) UISegmentedControl *seg2;//是否同步默认
+@property (nonatomic, strong) UIView *isOpenView;//是否营业view
+@property (nonatomic, strong) UIView *isMorenView;//是否默认商品
+@property (nonatomic, strong) NSUserDefaults *userdefault;
+@property (nonatomic, strong) UIView *backView;//弹出控件的背景
+@property (nonatomic, strong) UIPickerView *picker1;
+@property (nonatomic, strong) UIPickerView *picker2;
+@property (nonatomic, strong) NSArray *amArray;
+@property (nonatomic, strong) NSArray *pmArray;
+@property (nonatomic, strong) NSString *hourstr;
+@property (nonatomic, strong) NSString *secondesstr;
+@property (nonatomic, strong) UIButton *btn;
+@property (nonatomic, strong) NSMutableArray *yuangMuarr;//记录选取的员工
+@property (nonatomic, strong) NSData *imageData;//选取图片的数据
+@property (nonatomic, strong) NSData *yingyeImData;//选取营业执照的数据
+@property (nonatomic, strong) NSMutableArray *sortIdarr;//分类id
+@property (nonatomic, strong) NSMutableArray *sortNamearr;//分类名字
+@property (nonatomic, strong) NSString *sortid;//用来记录所选择的分类ID；
+@property (nonatomic, strong) NSString *ismoren;//用来记录创建店铺时是否选用默认商品
+@property (nonatomic, strong) NSString *lat;
+@property (nonatomic, strong) NSString *lon;
+@property (nonatomic, strong) NSMutableArray *dianzhangArr;
+@property (nonatomic, strong) NSMutableArray *dianyuanArr;
+@property (nonatomic, strong) NSString *dianzhangID;//用来记录店长的id
+@property (nonatomic, strong) NSString *status;//是否开放营业
+@property (nonatomic, strong) NSString *wokers;//用来记录当前店铺员工id
+@property (nonatomic, strong) NSMutableArray *workMuArr;//用来记录当前店铺员工的id;
+@property (nonatomic, strong) UITextField *mianjitf;//店铺面积
+@property (nonatomic, strong) UIImageView *addYingye;//添加营业执照
+@property (nonatomic, strong) NSString *whochoosePhoto;//判断是修改头像还是上传营业执照
+@property (nonatomic, assign) BOOL canShangchuan;//判断是否从添加店铺进入 来上传营业执照
+@property (nonatomic, strong) UIButton *nextBtn;//下一步
+@property (nonatomic, strong) NSString *idStr;
+@property (nonatomic, strong) NSMutableArray *mesArr;//店铺种类数组
+@property (nonatomic, strong) NSUserDefaults *userdefaults;
+@property (nonatomic, strong) NSString *mobile;
+@property (nonatomic, strong) NSString *shopID;
+@property (nonatomic, strong) UIButton *checkBtn;//勾选框
+@property (nonatomic, strong) UITextField *mobileField;
+
+
+@end
+
+@implementation TCCreateShopsViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if ([self.enterStr isEqualToString:@"1"]) {
+        self.title = @"店铺介绍管理";
+    }else{
+        self.title = @"店铺介绍";
+    }
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = TCBgColor;
+    _userdefault = [NSUserDefaults standardUserDefaults];
+    NSLog(@"%@ %@",[_userdefault valueForKey:@"userToken"],[_userdefault valueForKey:@"userID"]);
+    
+    self.shopID =[NSString stringWithFormat:@"%@",[_userdefault valueForKey:@"shopID"]];
+
+    self.mesArr = [NSMutableArray array];
+    [self creatUI];
+    
+    [self creatshopInfo];
+//    //设置时间数组
+//    self.amArray = [NSArray arrayWithObjects:@"小时",@"01:", @"02:", @"03:",@"04:",@"05:",@"06:",@"07:",@"08:",@"09:",@"10:",@"11:",@"12:", @"13:",@"14:",@"15:",@"16:",@"17:",@"18:",@"19:",@"20:",@"21:",@"22:",@"23:",@"00:",nil];
+//    self.pmArray = [NSArray arrayWithObjects:@"分钟", @"00", @"10", @"20", @"30", @"40", @"50", nil];
+}
+
+-(void)creatshopInfo{
+    if ([self.shopID isEqualToString:@"0"]) {
+        [self creatRequest];
+    }else{
+        UITextField *shopname = (UITextField *)[self.view viewWithTag:1000];
+        UITextField *state_field = (UITextField *)[self.view viewWithTag:1001];
+        UITextField*name_field = (UITextField *)[self.view viewWithTag:1002];
+        UITextField*sparePhone = (UITextField *)[self.view viewWithTag:1004];//参数可能要传
+        UITextField*userCode = (UITextField *)[self.view viewWithTag:1005];
+        NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+        NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+        NSString *Timestr = [TCGetTime getCurrentTime];
+        NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"shopid":self.shopID,@"type":@"1"};
+        NSString *singStr = [TCServerSecret loginStr:dic];
+        NSDictionary *parameters = @{@"timestamp":Timestr,@"sign":singStr,@"mid":mid,@"token":token,@"shopid":self.shopID,@"type":@"1"};
+        [TCNetworking postWithTcUrlString:[TCServerSecret loginAndRegisterSecretOffline:@"201014"] paramter:parameters success:^(NSString *jsonStr, NSDictionary *jsonDic) {
+            NSLog(@"%@---%@",jsonDic,jsonStr);
+            NSString *string = [NSString stringWithFormat:@"%@",jsonDic[@"code"]];
+            if ([string isEqualToString:@"1"]) {
+                self.nextBtn.alpha = 1;
+                self.nextBtn.userInteractionEnabled = YES;
+                NSString *str = [NSString stringWithFormat:@"%@",jsonDic[@"data"][@"shopcateid"]];
+                self.idStr = str;
+                NSString *shopcate = [NSString stringWithFormat:@"%@",jsonDic[@"data"][@"shopcatename"]];
+                //请求店铺种类
+                [self creatRequest];
+                userCode.text = [NSString stringWithFormat:@"%@",jsonDic[@"data"][@"up_user"]];
+                shopname.text = [NSString stringWithFormat:@"%@",jsonDic[@"data"][@"name"]];
+                userCode.text = [NSString stringWithFormat:@"%@",jsonDic[@"data"][@"up_user"]];
+                state_field.text = shopcate;
+                name_field.text = [NSString stringWithFormat:@"%@",jsonDic[@"data"][@"sellername"]];
+                NSString *backmobile = [NSString stringWithFormat:@"%@",jsonDic[@"data"][@"bakmobile"]];
+                self.mobile = [NSString stringWithFormat:@"%@",jsonDic[@"data"][@"mobile"]];
+                self.mobileField.text = self.mobile;
+                if ([backmobile isEqualToString:@""]) {
+                    nil;
+                }else{
+                    sparePhone.text = backmobile;
+                }
+            }
+        } failure:^(NSError *error) {
+            nil;
+        }];
+    }
+   
+    
+   
+}
+//qing
+-(void)creatRequest{
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"获取中..."];
+    self.view.userInteractionEnabled = NO;
+    NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+    NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+    NSString *Timestr = [TCGetTime getCurrentTime];
+    NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token};
+    NSString *singStr = [TCServerSecret loginStr:dic];
+    NSDictionary *parameters = @{@"timestamp":Timestr,@"sign":singStr,@"mid":mid,@"token":token};
+    
+    [TCNetworking postWithTcUrlString:[TCServerSecret loginAndRegisterSecretOffline:@"201015"] paramter:parameters success:^(NSString *jsonStr, NSDictionary *jsonDic) {
+        NSLog(@"%@---%@",jsonDic,jsonStr);
+        for (NSDictionary *dic in jsonDic[@"data"][@"shopcates"]) {
+            NSString *idStr = [NSString stringWithFormat:@"%@",dic[@"id"]];
+            NSString *name = [NSString stringWithFormat:@"%@",dic[@"name"]];
+            NSDictionary *info = @{@"id":idStr,@"name":name};
+            [self.mesArr addObject:info];
+        }
+        self.view.userInteractionEnabled = YES;
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *error) {
+        nil;
+        [SVProgressHUD dismiss];
+    }];
+}
+-(void)creatUI{
+    NSArray *titleS = @[@"店铺名称",@"经营品类",@"店主姓名",@"店主电话",@"备用电话",@"服务人员编码"];
+    for (int i = 0; i < titleS.count; i ++) {
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,i *55, WIDHT, 55)];
+        view.backgroundColor = TCUIColorFromRGB(0xFFFFFF);
+        [self.view addSubview:view];
+        UILabel *titLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 20, 60, 15)];
+        titLabel.text = titleS[i];
+        titLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+        titLabel.textColor = TCUIColorFromRGB(0x666666);
+        titLabel.textAlignment = NSTextAlignmentLeft;
+        [view addSubview:titLabel];
+        
+        UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(titLabel.frame) + 10, 20, WIDHT - 30 - 60 - 10, 15)];
+        textField.tag = 1000 + i;
+        [textField addTarget:self action:@selector(alueChange:) forControlEvents:(UIControlEventAllEditingEvents)];
+        textField.borderStyle = UITextBorderStyleNone;
+        textField.textAlignment = NSTextAlignmentRight;
+        textField.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+        [view addSubview:textField];
+        
+        if (i == 0) {
+            textField.placeholder = @"输入店铺名称(1-25字)";
+        }else if (i == 1){
+            textField.frame = CGRectMake(CGRectGetMaxX(titLabel.frame) + 10, 20, WIDHT - 30 - 60 - 10 - 5 - 20, 15);
+            textField.text = @"选择商品品类";
+            textField.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+            textField.textColor = TCUIColorFromRGB(0x53C3C3);
+            UITapGestureRecognizer *tapText = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapText:)];
+            [textField addGestureRecognizer:tapText];
+    
+            UIImageView *sanImage = [[UIImageView alloc]initWithFrame:CGRectMake(WIDHT - 15 - 5, (55 - 8)/2, 5, 8)];
+            sanImage.image = [UIImage imageNamed:@"进入小三角（灰）"];
+            [view addSubview:sanImage];
+            
+        }else if (i == 2){
+            textField.placeholder = @"请输入真实姓名";
+        }else if (i == 3){
+            self.mobileField = textField;
+            textField.text = [NSString stringWithFormat:@"%@",self.mobile];
+            [textField setEnabled:NO];
+        }else if (i == 4){
+            textField.placeholder = @"填写您的备用电话（选填）";
+        }
+        
+        if (i < titleS.count - 1) {
+            UIView *line = [[UIView alloc]initWithFrame:CGRectMake(15, 54, WIDHT - 15, 1)];
+            line.backgroundColor = TCLineColor;
+            [view addSubview:line];
+        }
+        if (i == titleS.count - 1) {
+            titLabel.frame = CGRectMake(15, 20, WIDHT/2 , 15);
+            if ([self.shopID isEqualToString:@"0"]) {
+                view.hidden = YES;
+            }else{
+                view.hidden = NO;
+                
+            }
+        }
+    }
+    
+    if ([self.shopID isEqualToString:@"0"]) {
+        self.checkBtn = [[UIButton alloc]initWithFrame:CGRectMake(15, 285, 16, 16)];
+        self.checkBtn.selected = YES;
+        [self.checkBtn setBackgroundImage:[UIImage imageNamed:@"小选中框"] forState:(UIControlStateSelected)];
+        [self.checkBtn setBackgroundImage:[UIImage imageNamed:@"选中框（灰）"] forState:(UIControlStateNormal)];
+        [self.checkBtn addTarget:self action:@selector(clickCheck:) forControlEvents:(UIControlEventTouchUpInside)];
+        [self.view addSubview:self.checkBtn];
+        
+        UILabel *agreeLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.checkBtn.frame) + 5, 287, 24, 12)];
+        agreeLabel.text = @"同意";
+        agreeLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+        agreeLabel.textColor = TCUIColorFromRGB(0x333333);
+        agreeLabel.textAlignment = NSTextAlignmentLeft;
+        [self.view addSubview:agreeLabel];
+        
+        UIButton *serviceBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(agreeLabel.frame), 287, 100, 12)];
+        [serviceBtn setBackgroundColor:TCBgColor];
+        [serviceBtn setTitle:@"《商家入驻协议》" forState:(UIControlStateNormal)];
+        [serviceBtn setTitleColor:TCUIColorFromRGB(0x4CA6FF) forState:(UIControlStateNormal)];
+        [serviceBtn addTarget:self action:@selector(clickService:) forControlEvents:(UIControlEventTouchUpInside)
+         ];
+        serviceBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+        serviceBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
+        [self.view addSubview:serviceBtn];
+        
+
+        self.nextBtn = [[UIButton alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(serviceBtn.frame) + 60, WIDHT - 30, 48)];
+        self.nextBtn.userInteractionEnabled = NO;
+        self.nextBtn.alpha = 0.6;
+        [self.nextBtn setBackgroundColor:TCUIColorFromRGB(0x53C3C3)];
+        [self.nextBtn setTitle:@"下一步" forState:(UIControlStateNormal)];
+        [self.nextBtn setTitleColor:TCUIColorFromRGB(0xFFFFFF) forState:(UIControlStateNormal)];
+        [self.nextBtn addTarget:self action:@selector(clickNext:) forControlEvents:(UIControlEventTouchUpInside)];
+        [self.view addSubview:self.nextBtn];
+    }else{
+        self.checkBtn = [[UIButton alloc]initWithFrame:CGRectMake(15, 340, 16, 16)];
+        self.checkBtn.selected = YES;
+        [self.checkBtn setBackgroundImage:[UIImage imageNamed:@"小选中框"] forState:(UIControlStateSelected)];
+        [self.checkBtn setBackgroundImage:[UIImage imageNamed:@"选中框（灰）"] forState:(UIControlStateNormal)];
+        [self.checkBtn addTarget:self action:@selector(clickCheck:) forControlEvents:(UIControlEventTouchUpInside)];
+        [self.view addSubview:self.checkBtn];
+        
+        UILabel *agreeLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.checkBtn.frame) + 5, 342, 24, 12)];
+        agreeLabel.text = @"同意";
+        agreeLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+        agreeLabel.textColor = TCUIColorFromRGB(0x333333);
+        agreeLabel.textAlignment = NSTextAlignmentLeft;
+        [self.view addSubview:agreeLabel];
+        
+        UIButton *serviceBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(agreeLabel.frame), 342, 100, 12)];
+        [serviceBtn setBackgroundColor:TCBgColor];
+        [serviceBtn setTitle:@"《商家入驻协议》" forState:(UIControlStateNormal)];
+        [serviceBtn setTitleColor:TCUIColorFromRGB(0x4CA6FF) forState:(UIControlStateNormal)];
+        [serviceBtn addTarget:self action:@selector(clickService:) forControlEvents:(UIControlEventTouchUpInside)
+         ];
+        serviceBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+        serviceBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
+        [self.view addSubview:serviceBtn];
+        
+        
+        self.nextBtn = [[UIButton alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(serviceBtn.frame) + 60, WIDHT - 30, 48)];
+        self.nextBtn.userInteractionEnabled = NO;
+        self.nextBtn.alpha = 0.6;
+        [self.nextBtn setBackgroundColor:TCUIColorFromRGB(0x53C3C3)];
+        if ([self.enterStr isEqualToString:@"1"]) {
+            [self.nextBtn setTitle:@"确认提交" forState:(UIControlStateNormal)];
+        }else{
+            [self.nextBtn setTitle:@"下一步" forState:(UIControlStateNormal)];
+        }
+        [self.nextBtn setTitleColor:TCUIColorFromRGB(0xFFFFFF) forState:(UIControlStateNormal)];
+        [self.nextBtn addTarget:self action:@selector(clickNext:) forControlEvents:(UIControlEventTouchUpInside)];
+        [self.view addSubview:self.nextBtn];
+    }
+}
+//点击用户服务协议
+-(void)clickService:(UIButton*)sender{
+    NSLog(@"点击了用户服务协议");
+    TCHtmlViewController *htmlVC = [[TCHtmlViewController alloc] init];
+    htmlVC.hidesBottomBarWhenPushed = YES;
+    htmlVC.html = @"https://h5.moumou001.com/help/seller/protocol.html";
+    htmlVC.title = @"服务协议";
+    [self.navigationController pushViewController:htmlVC animated:YES];
+    htmlVC.hidesBottomBarWhenPushed = NO;
+
+    
+    
+}
+-(void)clickCheck:(UIButton *)sender{
+    sender.selected = !sender.selected;
+}
+
+-(void)tapText:(UITapGestureRecognizer *)tap{
+    UITextField*shopstate = (UITextField *)[self.view viewWithTag:1001];
+    NSLog(@"选择经营品类");
+    TCshopStyleViewController *shopStyle = [[TCshopStyleViewController alloc]init];
+    shopStyle.messArr = self.mesArr;
+    shopStyle.block = ^(NSString *str) {
+        shopstate.text = str;
+    };
+    shopStyle.blocks = ^(NSString *idStr) {
+        self.idStr = idStr;
+    };
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:shopStyle animated:YES];
+    self.hidesBottomBarWhenPushed = YES;
+}
+
+-(void)clickNext:(UIButton *)sender{
+    UITextField *shopname = (UITextField *)[self.view viewWithTag:1000];
+    UITextField*shopstate = (UITextField *)[self.view viewWithTag:1001];
+    UITextField*name_field = (UITextField *)[self.view viewWithTag:1002];
+    UITextField*phone_field = (UITextField *)[self.view viewWithTag:1003];
+    UITextField*sparePhone = (UITextField *)[self.view viewWithTag:1004];//参数可能要传
+    if ([shopstate.text isEqualToString:@"选择商品品类"]) {
+        [TCProgressHUD showMessage:@"请选择经营品类"];
+    }else{
+        NSLog(@"信息全了");
+        if (sparePhone.text.length != 0) {
+            if (sparePhone.text.length < 11 && ![BSUtils checkTelNumber:sparePhone.text]) {
+                [TCProgressHUD showMessage:@"请输入正确的备用电话"];
+            }else{
+                if ([self.shopID isEqualToString:@"0"]) {
+                    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                    [SVProgressHUD showWithStatus:@"获取中..."];
+                    NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+                    NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+                    NSString *Timestr = [TCGetTime getCurrentTime];
+                    NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"name":shopname.text,@"shopcateid":self.idStr,@"mobile":self.mobile,@"sellername":name_field.text,@"bakmobile":sparePhone.text};
+                    NSString *singStr = [TCServerSecret signStr:dic];
+                    NSDictionary *parameters = @{@"timestamp":Timestr,@"sign":singStr,@"mid":mid,@"token":token,@"name":shopname.text,@"shopcateid":self.idStr,@"mobile":self.mobile,@"sellername":name_field.text,@"bakmobile":sparePhone.text};
+                    [TCNetworking postWithTcUrlString:[TCServerSecret loginAndRegisterSecretOffline:@"201005"] paramter:parameters success:^(NSString *jsonStr, NSDictionary *jsonDic) {
+                        NSLog(@"%@--%@",jsonDic,jsonStr);
+                        NSString *codeStr = [NSString stringWithFormat:@"%@",jsonDic[@"code"]];
+                        if ([codeStr isEqualToString:@"1"]) {
+                            [TCProgressHUD showMessage:jsonDic[@"msg"]];
+                            [self.userdefault setValue:jsonDic[@"data"][@"shopid"] forKey:@"shopID"];
+                            TCZiZhiInfoViewController *zizhiVC = [[TCZiZhiInfoViewController alloc]init];
+                            self.hidesBottomBarWhenPushed = YES;
+                            [self.navigationController pushViewController:zizhiVC animated:YES];
+                            self.hidesBottomBarWhenPushed = YES;
+                        }else{
+                            [TCProgressHUD showMessage:jsonDic[@"msg"]];
+                        }
+                        [SVProgressHUD dismiss];
+                    } failure:^(NSError *error) {
+                        nil;
+                    }];
+                }else{
+                    if ([self.enterStr isEqualToString:@"1"]) {
+                        //备用手机号不为空
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认修改店铺信息" message:@"修改您的店铺信息时您的店铺会保留原有信息作展示，客服审核通过后您的店铺将会以修改后的信息做展示。如果您需要快速上线可以联系客服，会加快您的审核进度。" preferredStyle:UIAlertControllerStyleAlert];
+                        UIView *subView1 = alert.view.subviews[0];
+                        UIView *subView2 = subView1.subviews[0];
+                        UIView *subView3 = subView2.subviews[0];
+                        UIView *subView4 = subView3.subviews[0];
+                        UIView *subView5 = subView4.subviews[0];
+                        UILabel *title = subView5.subviews[0];
+                        UILabel *message = subView5.subviews[1];
+                        message.textAlignment = NSTextAlignmentLeft;
+                        message.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+                        message.textColor = TCUIColorFromRGB(0x333333);
+                        UIAlertAction *sure = [UIAlertAction actionWithTitle:@"确认修改" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                            //这里添加了多线程，消除警告
+                            dispatch_after(0.2, dispatch_get_main_queue(), ^{
+                                [self editRequest];
+                                
+                            });                        }];
+                        [sure setValue:TCUIColorFromRGB(0x53C3C3) forKey:@"_titleTextColor"];
+                        UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"暂不修改" style:(UIAlertActionStyleCancel) handler:nil];
+                        [cancle setValue:TCUIColorFromRGB(0x53C3C3) forKey:@"_titleTextColor"];
+                        [alert addAction:sure];
+                        [alert addAction:cancle];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }else{
+                        //这里添加了多线程，消除警告
+                        dispatch_after(0.2, dispatch_get_main_queue(), ^{
+                            [self editRequest];
+                            
+                        });
+                    }
+                    
+                }
+
+            }
+        }else{
+            if ([self.shopID isEqualToString:@"0"]) {
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                [SVProgressHUD showWithStatus:@"获取中..."];
+                NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+                NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+                NSString *Timestr = [TCGetTime getCurrentTime];
+                NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"name":shopname.text,@"shopcateid":self.idStr,@"mobile":self.mobile,@"sellername":name_field.text};
+                NSString *singStr = [TCServerSecret signStr:dic];
+                NSDictionary *parameters = @{@"timestamp":Timestr,@"sign":singStr,@"mid":mid,@"token":token,@"name":shopname.text,@"shopcateid":self.idStr,@"mobile":self.mobile,@"sellername":name_field.text};
+                [TCNetworking postWithTcUrlString:[TCServerSecret loginAndRegisterSecretOffline:@"201005"] paramter:parameters success:^(NSString *jsonStr, NSDictionary *jsonDic) {
+                    NSLog(@"%@--%@",jsonDic,jsonStr);
+                    [self.userdefaults removeObjectForKey:@"showQr"];
+                    [self.userdefault setValue:[[jsonDic valueForKey:@"data"] valueForKey:@"showQr"] forKey:@"showQR"];
+                    NSString *codeStr = [NSString stringWithFormat:@"%@",jsonDic[@"code"]];
+                    if ([codeStr isEqualToString:@"1"]) {
+                        [TCProgressHUD showMessage:jsonDic[@"msg"]];
+                         [self.userdefault setValue:jsonDic[@"data"][@"shopid"] forKey:@"shopID"];
+                        TCZiZhiInfoViewController *zizhiVC = [[TCZiZhiInfoViewController alloc]init];
+                        self.hidesBottomBarWhenPushed = YES;
+                        [self.navigationController pushViewController:zizhiVC animated:YES];
+                        self.hidesBottomBarWhenPushed = YES;
+                    }else{
+                        [TCProgressHUD showMessage:jsonDic[@"msg"]];
+                    }
+                    [SVProgressHUD dismiss];
+                } failure:^(NSError *error) {
+                    nil;
+                }];
+            }else{
+                
+                //备用手机号为空
+                if ([self.enterStr isEqualToString:@"1"]){
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认修改店铺信息" message:@"修改您的店铺信息时您的店铺会保留原有信息作展示，客服审核通过后您的店铺将会以修改后的信息做展示。如果您需要快速上线可以联系客服，会加快您的审核进度。" preferredStyle:UIAlertControllerStyleAlert];
+                    UIView *subView1 = alert.view.subviews[0];
+                    UIView *subView2 = subView1.subviews[0];
+                    UIView *subView3 = subView2.subviews[0];
+                    UIView *subView4 = subView3.subviews[0];
+                    UIView *subView5 = subView4.subviews[0];
+                    UILabel *title = subView5.subviews[0];
+                    UILabel *message = subView5.subviews[1];
+                    message.textAlignment = NSTextAlignmentLeft;
+                    message.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+                    message.textColor = TCUIColorFromRGB(0x333333);
+                    UIAlertAction *sure = [UIAlertAction actionWithTitle:@"确认修改" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                        //这里添加了多线程，消除警告
+                        dispatch_after(0.2, dispatch_get_main_queue(), ^{
+                            [self editRequest];
+
+                        });
+                        }];
+                    [sure setValue:TCUIColorFromRGB(0x53C3C3) forKey:@"_titleTextColor"];
+                    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"暂不修改" style:(UIAlertActionStyleCancel) handler:nil];
+                    [cancle setValue:TCUIColorFromRGB(0x53C3C3) forKey:@"_titleTextColor"];
+                    [alert addAction:sure];
+                    [alert addAction:cancle];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }else{
+                    //这里添加了多线程，消除警告
+                    dispatch_after(0.2, dispatch_get_main_queue(), ^{
+                        [self editRequest];
+                        
+                    });
+                }
+                
+        }
+        }
+        
+    }
+    
+}
+-(void)editRequest{
+    UITextField *shopname = (UITextField *)[self.view viewWithTag:1000];
+    UITextField*shopstate = (UITextField *)[self.view viewWithTag:1001];
+    UITextField*name_field = (UITextField *)[self.view viewWithTag:1002];
+    UITextField*phone_field = (UITextField *)[self.view viewWithTag:1003];
+    UITextField*sparePhone = (UITextField *)[self.view viewWithTag:1004];//参数可能要传
+    
+    
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"获取中..."];
+    NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+    NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+    NSString *Timestr = [TCGetTime getCurrentTime];
+    NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"name":shopname.text,@"shopcateid":self.idStr,@"mobile":self.mobile,@"sellername":name_field.text,@"shopid":self.shopID};
+    NSString *singStr = [TCServerSecret signStr:dic];
+    NSDictionary *parameters = @{@"timestamp":Timestr,@"sign":singStr,@"mid":mid,@"token":token,@"name":shopname.text,@"shopcateid":self.idStr,@"mobile":self.mobile,@"sellername":name_field.text,@"shopid":self.shopID};
+    [TCNetworking postWithTcUrlString:[TCServerSecret loginAndRegisterSecretOffline:@"201005"] paramter:parameters success:^(NSString *jsonStr, NSDictionary *jsonDic) {
+        NSLog(@"%@--%@",jsonDic,jsonStr);
+        NSString *codeStr = [NSString stringWithFormat:@"%@",jsonDic[@"code"]];
+        if ([codeStr isEqualToString:@"1"]) {
+            [TCProgressHUD showMessage:jsonDic[@"msg"]];
+            TCZiZhiInfoViewController *zizhiVC = [[TCZiZhiInfoViewController alloc]init];
+            zizhiVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:zizhiVC animated:YES];
+            self.hidesBottomBarWhenPushed = YES;
+        }else{
+            [TCProgressHUD showMessage:jsonDic[@"msg"]];
+        }
+        
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        nil;
+    }];
+}
+-(void)editphoneRequest{
+    UITextField *shopname = (UITextField *)[self.view viewWithTag:1000];
+    UITextField*shopstate = (UITextField *)[self.view viewWithTag:1001];
+    UITextField*name_field = (UITextField *)[self.view viewWithTag:1002];
+    UITextField*phone_field = (UITextField *)[self.view viewWithTag:1003];
+    UITextField*sparePhone = (UITextField *)[self.view viewWithTag:1004];//参数可能要传
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"获取中..."];
+    NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+    NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+    NSString *Timestr = [TCGetTime getCurrentTime];
+    NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"name":shopname.text,@"shopcateid":self.idStr,@"mobile":self.mobile,@"sellername":name_field.text,@"shopid":self.shopID};
+    NSString *singStr = [TCServerSecret signStr:dic];
+    NSDictionary *parameters = @{@"timestamp":Timestr,@"sign":singStr,@"mid":mid,@"token":token,@"name":shopname.text,@"shopcateid":self.idStr,@"mobile":self.mobile,@"sellername":name_field.text,@"shopid":self.shopID};
+    [TCNetworking postWithTcUrlString:[TCServerSecret loginAndRegisterSecretOffline:@"201005"] paramter:parameters success:^(NSString *jsonStr, NSDictionary *jsonDic) {
+        NSLog(@"%@--%@",jsonDic,jsonStr);
+        NSString *codeStr = [NSString stringWithFormat:@"%@",jsonDic[@"code"]];
+        if ([codeStr isEqualToString:@"1"]) {
+            [TCProgressHUD showMessage:jsonDic[@"msg"]];
+            TCZiZhiInfoViewController *zizhiVC = [[TCZiZhiInfoViewController alloc]init];
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:zizhiVC animated:YES];
+            self.hidesBottomBarWhenPushed = YES;
+        }else{
+            [TCProgressHUD showMessage:jsonDic[@"msg"]];
+        }
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *error) {
+        nil;
+    }];
+}
+
+
+- (void)alueChange:(UITextField *)textField{
+    
+    UITextField *shopname = (UITextField *)[self.view viewWithTag:1000];
+    UITextField*shopstate = (UITextField *)[self.view viewWithTag:1001];
+    UITextField*name_field = (UITextField *)[self.view viewWithTag:1002];
+    UITextField*phone_field = (UITextField *)[self.view viewWithTag:1003];
+    UITextField*sparePhone = (UITextField *)[self.view viewWithTag:1004];
+    if (shopname.text.length != 0 && name_field.text.length != 0) {
+        self.nextBtn.userInteractionEnabled = YES;
+        self.nextBtn.alpha = 1;
+    }else{
+        self.nextBtn.userInteractionEnabled = NO;
+        self.nextBtn.alpha = 0.6;
+    }
+}
+
+- (void)updateframe{
+    _btn.frame = CGRectMake(10, _addYingye.frame.origin.y + _addYingye.frame.size.height + 30, WIDHT - 20, 48);
+    _mainScrollview.contentSize = CGSizeMake(WIDHT, _btn.frame.origin.y + _btn.frame.size.height + 100);
+}
+
+
+
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField == _addtf) {
+        //定位
+        [_addtf resignFirstResponder];
+        TCDingweiViewController *dingwei = [[TCDingweiViewController alloc]init];
+        UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:dingwei];
+        if (_loginCome) {
+            [self presentViewController:navi animated:YES completion:nil];
+        }else{
+            [self.navigationController presentViewController:navi animated:YES completion:nil];
+        }
+    }else if (textField == _styletf){
+        //超市类型
+        [self.view endEditing:YES];
+        [self backViews];
+        UIView *sview = [[UIView alloc]initWithFrame:CGRectMake(WIDHT / 2, HEIGHT / 2, 0, 0)];
+        sview.backgroundColor = [UIColor whiteColor];
+        sview.layer.cornerRadius = 5;
+        [_backView addSubview: sview];
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            [sview setFrame:CGRectMake(10, HEIGHT / 2 - 100, WIDHT - 20, 200)];
+            int count = (short)_sortNamearr.count;
+            for (int i = 0; i < count; i++) {
+                UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+                btn.frame = [self setBtnFrame:i andViewWidth:sview.frame.size.width];
+                [btn setTitle:[NSString stringWithFormat:@"%@", _sortNamearr[i]] forState:UIControlStateNormal];
+                btn.layer.cornerRadius = 3;
+                btn.layer.borderWidth = 1;
+                btn.tag = i;
+                btn.layer.borderColor = [UIColor colorWithRed:0 / 255.0 green:136 / 255.0 blue:204 / 255.0 alpha:1].CGColor;
+                [btn setTitleColor:[UIColor colorWithRed:0 / 255.0 green:136 / 255.0 blue:204 / 255.0 alpha:1] forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(styleBtn:) forControlEvents:UIControlEventTouchUpInside];
+                [sview addSubview: btn];
+            }
+        } completion:nil];
+    }else if (textField == _dianyuantf){
+        //指定店员
+        [self.view endEditing:YES];
+        [self backViews];
+        UIView *sview = [[UIView alloc]initWithFrame:CGRectMake(WIDHT / 2, HEIGHT / 2, 0, 0)];
+        sview.backgroundColor = [UIColor whiteColor];
+        sview.layer.cornerRadius = 5;
+        [_backView addSubview: sview];
+        UIScrollView *scrollview = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, sview.frame.size.width, sview.frame.size.height - 36 - 1.5)];
+        [sview addSubview: scrollview];
+        
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            [sview setFrame:CGRectMake(10, HEIGHT / 2 - 100, WIDHT - 20, 220)];
+            [scrollview setFrame:CGRectMake(0, 0, sview.frame.size.width, sview.frame.size.height - 36 - 1.5)];
+            UIImageView *line = [[UIImageView alloc]initWithFrame:CGRectMake(0, sview.frame.size.height - 60, sview.frame.size.width, 1.5)];
+            line.backgroundColor = btnColors;
+            [sview addSubview: line];
+            //创建取消按钮
+            UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeSystem];
+            btn1.titleLabel.font = [UIFont systemFontOfSize:16];
+            btn1.backgroundColor = [UIColor whiteColor];
+            btn1.frame = CGRectMake(0, line.frame.origin.y + 1.5, sview.frame.size.width / 2, sview.frame.size.height - line.frame.origin.y - 1.5);
+            [btn1 setTitle:@"取消" forState:UIControlStateNormal];
+            [btn1 setTitleColor:btnColors forState:UIControlStateNormal];
+            [btn1 addTarget:self action:@selector(remove) forControlEvents:UIControlEventTouchUpInside];
+            [sview addSubview: btn1];
+            //创建确认按钮
+            UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeSystem];
+            btn2.titleLabel.font = [UIFont systemFontOfSize:16];
+            btn2.frame = CGRectMake(btn1.frame.size.width, btn1.frame.origin.y, btn1.frame.size.width, btn1.frame.size.height);
+            [btn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [btn2 setTitle:@"确定" forState:UIControlStateNormal];
+            [btn2 addTarget:self action:@selector(chick:) forControlEvents:UIControlEventTouchUpInside];
+            UIBezierPath *pa = [UIBezierPath bezierPathWithRoundedRect:btn2.bounds byRoundingCorners:UIRectCornerBottomRight cornerRadii:CGSizeMake(5, 5)];
+            CAShapeLayer *lay = [[CAShapeLayer alloc]init];
+            lay.path = pa.CGPath;
+            lay.frame = btn2.bounds;
+            btn2.layer.mask = lay;
+            btn2.backgroundColor = btnColors;
+            [sview addSubview: btn2];
+            int count = (short)_dianyuanArr.count;
+            if (count != 0) {
+                for (int i = 0; i < count; i++) {
+                    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+                    btn.frame = [self setBtnFrame:i andViewWidth:sview.frame.size.width];
+                    [btn setTitle:[NSString stringWithFormat:@"%@", _dianyuanArr[i][@"name"]] forState:UIControlStateNormal];
+                    btn.layer.cornerRadius = 3;
+                    btn.layer.borderWidth = 1;
+                    btn.tag = i;
+                    btn.titleLabel.font = [UIFont systemFontOfSize:15];
+                    btn.layer.borderColor = [UIColor colorWithRed:0 / 255.0 green:136 / 255.0 blue:204 / 255.0 alpha:1].CGColor;
+                    [btn addTarget:self action:@selector(duoxuan:) forControlEvents:UIControlEventTouchUpInside];
+                    [btn setTitleColor:[UIColor colorWithRed:0 / 255.0 green:136 / 255.0 blue:204 / 255.0 alpha:1] forState:UIControlStateNormal];
+                    if ([_yuangMuarr containsObject:_dianyuanArr[i][@"name"]]) {
+                        //设置该按钮为选取状态
+                        btn.selected = YES;
+                        btn.backgroundColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.3];
+                    }
+                    
+                    [scrollview addSubview: btn];
+                    if (i == count - 1) {
+                        scrollview.contentSize = CGSizeMake(sview.frame.size.width, btn.frame.origin.y + btn.frame.size.height * 2);
+                    }
+                }
+            }else{
+                [SVProgressHUD showErrorWithStatus:@"还未编辑店员"];
+                
+            }
+            
+        } completion:nil];
+    }else if (textField == _dianzhangtf){
+        //指定店长
+        [self.view endEditing:YES];
+        [self backViews];
+        UIView *sview = [[UIView alloc]initWithFrame:CGRectMake(WIDHT / 2, HEIGHT / 2, 0, 0)];
+        sview.backgroundColor = [UIColor whiteColor];
+        sview.layer.cornerRadius = 5;
+        [_backView addSubview: sview];
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            [sview setFrame:CGRectMake(10, HEIGHT / 2 - 100, WIDHT - 20, 200)];
+            int count = (short)_dianzhangArr.count;
+            for (int i = 0; i < count; i++) {
+                UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+                btn.frame = [self setBtnFrame:i andViewWidth:sview.frame.size.width];
+                [btn setTitle:[NSString stringWithFormat:@"%@",  _dianzhangArr[i][@"name"]] forState:UIControlStateNormal];
+                btn.layer.cornerRadius = 3;
+                btn.layer.borderWidth = 1;
+                btn.tag = i;
+                btn.titleLabel.font = [UIFont systemFontOfSize:15];
+                btn.layer.borderColor = [UIColor colorWithRed:0 / 255.0 green:136 / 255.0 blue:204 / 255.0 alpha:1].CGColor;
+                [btn setTitleColor:[UIColor colorWithRed:0 / 255.0 green:136 / 255.0 blue:204 / 255.0 alpha:1] forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(dianzhang:) forControlEvents:UIControlEventTouchUpInside];
+                if ([_dianzhangtf.text isEqualToString: _dianzhangArr[i][@"name"]]) {
+                    btn.backgroundColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.3];
+                }
+                [sview addSubview: btn];
+            }
+        } completion:nil];
+    }else if (textField == _starttf){
+        //设置开始时间
+        [self.view endEditing:YES];
+        [self backViews];
+        UIView *sview = [[UIView alloc]initWithFrame:CGRectMake(WIDHT / 2, HEIGHT / 2, 0, 0)];
+        sview.backgroundColor = [UIColor whiteColor];
+        sview.layer.cornerRadius = 5;
+        [_backView addSubview: sview];
+        [UIView animateWithDuration:0.2 animations:^{
+            [sview setFrame:CGRectMake(10, HEIGHT / 2 - 100, WIDHT - 20, 200)];
+            //创建头部label
+            UILabel *toplb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, sview.frame.size.width, 40)];
+            toplb.text = @"开始时间";
+            toplb.backgroundColor = btnColors;
+            toplb.textColor = [UIColor whiteColor];
+            toplb.font = [UIFont systemFontOfSize:20];
+            toplb.layer.masksToBounds = YES;
+            toplb.textAlignment = NSTextAlignmentCenter;
+            UIBezierPath *p1 = [UIBezierPath bezierPathWithRoundedRect:toplb.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
+            CAShapeLayer *ca = [[CAShapeLayer alloc]init];
+            ca.path = p1.CGPath;
+            toplb.layer.mask = ca;
+            [sview addSubview: toplb];
+            self.picker1 = [[UIPickerView alloc]initWithFrame:CGRectMake(80, 40, sview.frame.size.width - 160, sview.frame.size.height - 50 - 40)];
+            self.picker1.backgroundColor = [UIColor lightGrayColor];
+            self.picker1.delegate = self;
+            self.picker1.dataSource = self;
+            self.picker1  .backgroundColor = [UIColor whiteColor];
+            self.hourstr = @"08:";
+            self.secondesstr = @"00";
+            
+            //设置默认值
+            [self.picker1 selectRow:8 inComponent:0 animated:YES];
+            [self.picker1 selectRow:1 inComponent:1 animated:YES];
+            [sview addSubview: _picker1];
+            
+            UIButton *bottombtn = [[UIButton alloc]initWithFrame:CGRectMake(0, sview.frame.size.height - 40, sview.frame.size.width / 2, 40)];
+            bottombtn.backgroundColor = [UIColor whiteColor];
+            [bottombtn setTitle:@"取消" forState:UIControlStateNormal];
+            [bottombtn setTitleColor:btnColors forState:UIControlStateNormal];
+            bottombtn.titleLabel.font = [UIFont systemFontOfSize:16];
+            [bottombtn addTarget:self action:@selector(remove) forControlEvents:UIControlEventTouchUpInside];
+            [sview addSubview: bottombtn];
+            UIButton *bottombtn2 = [[UIButton alloc]initWithFrame:CGRectMake(bottombtn.frame.size.width, bottombtn.frame.origin.y, bottombtn.frame.size.width, 40)];
+            bottombtn2.backgroundColor = btnColors;
+            [bottombtn2 setTitle:@"确认" forState:UIControlStateNormal];
+            [bottombtn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            bottombtn2 .titleLabel.font = [UIFont systemFontOfSize:16];
+            [bottombtn2 addTarget:self action:@selector(commits) forControlEvents:UIControlEventTouchUpInside];
+            [sview addSubview: bottombtn2];
+            UIImageView *line = [[UIImageView alloc]initWithFrame:CGRectMake(0, sview.frame.size.height - 40, sview.frame.size.width, 1.5)];
+            line.backgroundColor = btnColors;
+            [sview addSubview: line];
+        }];
+    }else if (textField == _stoptf){
+        //设置结束时间
+        [self.view endEditing:YES];
+        [self backViews];
+        UIView *sview = [[UIView alloc]initWithFrame:CGRectMake(WIDHT / 2, HEIGHT / 2, 0, 0)];
+        sview.backgroundColor = [UIColor whiteColor];
+        sview.layer.cornerRadius = 5;
+        [_backView addSubview: sview];
+        [UIView animateWithDuration:0.2 animations:^{
+            [sview setFrame:CGRectMake(10, HEIGHT / 2 - 100, WIDHT - 20, 200)];
+            //创建头部label
+            UILabel *toplb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, sview.frame.size.width, 40)];
+            toplb.text = @"结束时间";
+            toplb.backgroundColor = btnColors;
+            toplb.textColor = [UIColor whiteColor];
+            toplb.font = [UIFont systemFontOfSize:20];
+            toplb.layer.masksToBounds = YES;
+            toplb.textAlignment = NSTextAlignmentCenter;
+            UIBezierPath *p1 = [UIBezierPath bezierPathWithRoundedRect:toplb.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
+            CAShapeLayer *ca = [[CAShapeLayer alloc]init];
+            ca.path = p1.CGPath;
+            toplb.layer.mask = ca;
+            [sview addSubview: toplb];
+            self.picker2 = [[UIPickerView alloc]initWithFrame:CGRectMake(80, 40, sview.frame.size.width - 160, sview.frame.size.height - 50 - 40)];
+            self.picker2.backgroundColor = [UIColor lightGrayColor];
+            self.picker2.delegate = self;
+            self.picker2.dataSource = self;
+            self.picker2  .backgroundColor = [UIColor whiteColor];
+            self.hourstr = @"08:";
+            self.secondesstr = @"00";
+            
+            //设置默认值
+            [self.picker2 selectRow:20 inComponent:0 animated:YES];
+            [self.picker2 selectRow:1 inComponent:1 animated:YES];
+            [sview addSubview: _picker2];
+            
+            UIButton *bottombtn = [[UIButton alloc]initWithFrame:CGRectMake(0, sview.frame.size.height - 40, sview.frame.size.width / 2, 40)];
+            bottombtn.backgroundColor = [UIColor whiteColor];
+            [bottombtn setTitle:@"取消" forState:UIControlStateNormal];
+            [bottombtn setTitleColor:btnColors forState:UIControlStateNormal];
+            bottombtn.titleLabel.font = [UIFont systemFontOfSize:16];
+            [bottombtn addTarget:self action:@selector(remove) forControlEvents:UIControlEventTouchUpInside];
+            [sview addSubview: bottombtn];
+            UIButton *bottombtn2 = [[UIButton alloc]initWithFrame:CGRectMake(bottombtn.frame.size.width, bottombtn.frame.origin.y, bottombtn.frame.size.width, 40)];
+            bottombtn2.backgroundColor = btnColors;
+            [bottombtn2 setTitle:@"确认" forState:UIControlStateNormal];
+            [bottombtn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            bottombtn2 .titleLabel.font = [UIFont systemFontOfSize:16];
+            [bottombtn2 addTarget:self action:@selector(commit) forControlEvents:UIControlEventTouchUpInside];
+            [sview addSubview: bottombtn2];
+            UIImageView *line = [[UIImageView alloc]initWithFrame:CGRectMake(0, sview.frame.size.height - 40, sview.frame.size.width, 1.5)];
+            line.backgroundColor = btnColors;
+            [sview addSubview: line];
+        }];
+    }
+    
+    if (textField == _peisongtf) {
+        return YES;
+    }else{
+        return NO;
+    }
+    
+}
+
+//店铺分类信息
+- (void)getfenlei{
+    _sortIdarr = [NSMutableArray array];
+    _sortNamearr = [NSMutableArray array];
+    [TCAFNetworking postWithURLString:[TCServerSecret loginAndRegisterSecret:@"200012"] parameters:@{@"id":[_userdefault valueForKey:@"userID"], @"token":[_userdefault valueForKey:@"userToken"]} success:^(id responseObject) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSArray *arr = dic[@"data"];
+        if (arr.count != 0) {
+            for (int i = 0; i < arr.count; i++) {
+                [_sortIdarr addObject:arr[i][@"id"]];
+                [_sortNamearr addObject:arr[i][@"name"]];
+            }
+        }
+    } failure:^(NSError *error) {
+        nil;
+    }];
+}
+
+//店铺类型按钮事件
+- (void)styleBtn:(UIButton *)sender{
+    _styletf.text = sender.titleLabel.text;
+    _sortid = _sortIdarr[sender.tag];
+    [_backView removeFromSuperview];
+}
+
+//指定店长按钮事件
+- (void)dianzhang:(UIButton *)sender{
+    _dianzhangID = _dianzhangArr[sender.tag][@"id"];
+    _dianzhangtf.text = sender.titleLabel.text;
+    [_backView removeFromSuperview];
+}
+
+//按钮取消事件
+- (void)remove{
+    [_backView removeFromSuperview];
+}
+
+//按钮确认事件(开始)
+- (void)commits{
+    [_backView removeFromSuperview];
+    if (self.hourstr && self.secondesstr) {
+        if([self.hourstr isEqualToString:@"08:"] && [self.secondesstr isEqualToString:@"00"]){
+            _starttf.text = @"08:00";
+            // [backView removeFromSuperview];
+        }
+        if (![self.hourstr isEqualToString:@"小时"]) {
+            if (![self.secondesstr isEqualToString:@"分钟"]) {
+                _starttf.text = [self.hourstr stringByAppendingString:self.secondesstr];
+            }
+        }
+    }
+}
+
+//按钮确认事件（结束）
+- (void)commit{
+    [_backView removeFromSuperview];
+    if (self.hourstr && self.secondesstr) {
+        if([self.hourstr isEqualToString:@"08:"] && [self.secondesstr isEqualToString:@"00"]){
+            _stoptf.text = @"08:00";
+        }
+        if (![self.hourstr isEqualToString:@"小时"]) {
+            if (![self.secondesstr isEqualToString:@"分钟"]) {
+                _stoptf.text = [self.hourstr stringByAppendingString:self.secondesstr];
+            }
+        }
+    }
+}
+
+//指定店员确认按钮事件
+- (void)chick:(UIButton *)sender{
+    if (_yuangMuarr.count != 0) {
+        //拼接名称
+        NSString *str = _yuangMuarr[0];
+        for (int i = 1; i < _yuangMuarr.count; i++) {
+            str = [str stringByAppendingString:[NSString stringWithFormat:@",%@", _yuangMuarr[i]]];
+        }
+        _dianyuantf.text = str;
+        
+        //拼接id
+        NSString *str1 = _workMuArr[0];
+        for (int i = 1; i < _workMuArr.count; i++) {
+            str1 = [str1 stringByAppendingString:[NSString stringWithFormat:@",%@", _workMuArr[i]]];
+        }
+        _wokers = str1;
+        NSLog(@"拼接 %@ \n ---%@", str, str1);
+    }
+    
+    [_backView removeFromSuperview];
+}
+
+//选取指定员工按钮事件
+- (void)duoxuan:(UIButton *)sender{
+    sender.selected = !sender.selected;
+    if (sender.isSelected) {
+        //如果当前按钮为被选取状态
+        sender.backgroundColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.5];
+        //判断是否已在数组中（即开始加载数据时 获得的员工）  不在-----加入到数组中去
+        if (![_yuangMuarr containsObject: sender.titleLabel.text]) {
+            [_yuangMuarr addObject: sender.titleLabel.text];
+        }
+        if (![_workMuArr containsObject:_dianyuanArr[sender.tag][@"id"]]) {
+            [_workMuArr addObject:_dianyuanArr[sender.tag][@"id"]];
+        }
+        
+    }else{
+        //判断id
+        sender.backgroundColor = [UIColor whiteColor];
+        for (int i = 0 ; i < _yuangMuarr.count; i++) {
+            if ([sender.titleLabel.text isEqualToString: _yuangMuarr[i]]) {
+                [_yuangMuarr removeObjectAtIndex:i];
+            }
+        }
+        
+        for (int i = 0; i < _workMuArr.count; i++) {
+            if ([_dianyuanArr[sender.tag][@"id"] isEqualToString:_workMuArr[i]]) {
+                [_workMuArr removeObjectAtIndex:i];
+            }
+        }
+    }
+    
+    NSLog(@"当前数组 %@  \n  %@", _yuangMuarr, _workMuArr);
+}
+
+//提交按钮
+- (void)create{
+    if (_isChange) {
+        // 如果进来修改店铺 可以获取状态
+        if ([_mesDic[@"status"] isEqualToString:@"1"] || [_mesDic[@"status"] isEqualToString:@"-1"]) {
+            if (_seg1.selectedSegmentIndex == 0) {
+                //是
+                _status = @"1";
+            }else{
+                _status = @"-1";
+            }
+        }else{
+            _status = @"-2";//未审核
+        }
+    }else{
+        _status = @"0";
+    }
+    
+    if (_seg2.selectedSegmentIndex == 0) {
+        //是
+        _ismoren = @"1";
+    }else{
+        _ismoren = @"0";
+    }
+    
+    NSDictionary *paramter = [NSDictionary dictionary];
+    
+    //判断是否可以提交
+    BOOL isCanCommit = NO;
+    if ([_mesDic[@"status"] isEqualToString:@"-2"]) {
+        //表示第一次创建或者未通过  可提交营业执照  所有信息都不能为空
+        if ([_nametf.text isEqualToString:@""] || [_styletf.text isEqualToString:@""] || [_addtf.text isEqualToString:@""] || [_dianzhangtf.text isEqualToString:@""] || [_starttf.text isEqualToString:@""] || [_stoptf.text isEqualToString:@""] || [_qisongtf.text isEqualToString:@""] || [_phonenum.text isEqualToString:@""]|| [_peisongtf.text isEqualToString:@""] || !self.imageData || [_mianjitf.text isEqualToString:@""] || !self.yingyeImData) {
+            isCanCommit = NO;
+        }else{
+            isCanCommit = YES;
+        }
+    }else{
+        //否则表示已通过审核 不能在上传营业执照
+        if ([_nametf.text isEqualToString:@""] || [_styletf.text isEqualToString:@""] || [_addtf.text isEqualToString:@""] || [_dianzhangtf.text isEqualToString:@""] || [_starttf.text isEqualToString:@""] || [_stoptf.text isEqualToString:@""] || [_qisongtf.text isEqualToString:@""] || [_peisongtf.text isEqualToString:@""] || !self.imageData || [_mianjitf.text isEqualToString:@""] || [_phonenum.text isEqualToString:@""]) {
+            isCanCommit = NO;
+        }else{
+            isCanCommit = YES;
+        }
+    }
+    
+    if (!isCanCommit) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"请将店铺信息填写完整" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else{
+        [SVProgressHUD showWithStatus:@"提交中..."];
+        if (_isChange) {
+            NSLog(@"状态 %@", _status);
+            //修改
+            NSString *s = [_starttf.text stringByAppendingString:[NSString stringWithFormat:@"-%@", _stoptf.text]];
+            if ([_mesDic[@"status"] isEqualToString:@"-2"]) {
+                //表示未通过 要求选择是否添加默认商品
+                paramter = @{@"defaultGoods":_ismoren, @"id":[_userdefault valueForKey:@"userID"], @"token":[_userdefault valueForKey:@"userToken"], @"catid":_sortid, @"name":_nametf.text, @"address":_addtf2.text, @"shopkeeperid":_dianzhangID, @"locaddress":_addtf.text, @"shopTime":s, @"startPrice":_qisongtf.text, @"distributionPrice":_peisongtf.text, @"tel":_phonenum.text, @"latitude":_lat, @"lontitude":_lon, @"status":_status, @"area":_mianjitf.text, @"shopid":_shopid};
+            }else{
+                paramter = @{@"shopid":_shopid, @"id":[_userdefault valueForKey:@"userID"], @"token":[_userdefault valueForKey:@"userToken"], @"catid":_sortid, @"name":_nametf.text, @"address":_addtf2.text, @"shopkeeperid":_dianzhangID, @"locaddress":_addtf.text, @"shopTime":s, @"startPrice":_qisongtf.text, @"distributionPrice":_peisongtf.text, @"tel":_phonenum.text, @"latitude":_lat, @"lontitude":_lon, @"status":_status, @"workers":_wokers, @"area":_mianjitf.text};
+            }
+        }else{
+            //创建店铺
+            NSString *s = [_starttf.text stringByAppendingString:[NSString stringWithFormat:@"-%@", _stoptf.text]];
+            paramter = @{@"defaultGoods":_ismoren, @"id":[_userdefault valueForKey:@"userID"], @"token":[_userdefault valueForKey:@"userToken"], @"catid":_sortid, @"name":_nametf.text, @"address":_addtf2.text, @"shopkeeperid":_dianzhangID, @"locaddress":_addtf.text, @"shopTime":s, @"startPrice":_qisongtf.text, @"distributionPrice":_peisongtf.text, @"tel":_phonenum.text, @"latitude":_lat, @"lontitude":_lon, @"status":_status, @"area":_mianjitf.text};
+        }
+        NSLog(@"%@", paramter);
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [manager POST:[TCServerSecret loginAndRegisterSecret:@"200003"] parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            if (_imageData) {
+                [formData appendPartWithFileData:_imageData  name:@"headPic" fileName:@"chooseHead.png" mimeType:@"image/png"];
+            }
+            if (_yingyeImData) {
+                [formData appendPartWithFileData:_yingyeImData  name:@"license" fileName:@"choosezhizhao.png" mimeType:@"image/png"];
+            }
+            
+            //判断状态是否可以提交营业执照
+            if ([_mesDic[@"status"] isEqualToString:@"-2"]) {
+                if (_yingyeImData) {
+                    [formData appendPartWithFileData:_yingyeImData  name:@"license" fileName:@"choosezhizhao.png" mimeType:@"image/png"];
+                }
+            }
+        } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            [SVProgressHUD showSuccessWithStatus: dic[@"retMessage"]];
+            if ([[NSString stringWithFormat:@"%@", dic[@"retValue"]] isEqualToString:@"5"]) {
+                //如果是从登陆进来  创建成功后  到主页
+                if (_loginCome) {
+                    TCTabBarViewController *tab = [[TCTabBarViewController alloc]init];
+                    [self presentViewController:tab animated:YES completion:nil];
+                }else{
+                    [self performSelector:@selector(pop) withObject:self afterDelay:1];
+                }
+            }
+            NSLog(@"店铺提交  %@  %@", str, dic);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            nil;
+        }];
+    }
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 2;
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
+    return 70;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    if (component == 0) {
+        return self.amArray.count;
+    }else{
+        return self.pmArray.count;
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    if (component == 0) {
+        self.hourstr = self.amArray[row];
+    }else{
+        self.secondesstr = self.pmArray[row];
+    }
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    if (component == 0) {
+        return [self.amArray objectAtIndex:row];
+    }else{
+        return [self.pmArray objectAtIndex:row];
+    }
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* pickerLabel = (UILabel*)view;
+    pickerLabel = [[UILabel alloc] init];
+    if (component == 0) {
+        pickerLabel.textAlignment = NSTextAlignmentRight;
+    }
+    [pickerLabel setBackgroundColor:[UIColor clearColor]];
+    [pickerLabel setFont:[UIFont boldSystemFontOfSize:32]];
+    pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
+    return pickerLabel;
+}
+
+//设置按钮位置
+- (CGRect)setBtnFrame:(int)i andViewWidth:(CGFloat) wid{
+    CGFloat w = 10 + (wid - 40) / 3;
+    CGFloat h = 10 + 36;
+    return  CGRectMake(10 + (i % 3) * w, 10 + (i / 3) * h, (wid - 40) / 3, 36);
+}
+
+//创建背景view
+- (void)backViews{
+    _backView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    _backView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.3];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
+    [_backView addGestureRecognizer:tap];
+    [[UIApplication sharedApplication].keyWindow addSubview:_backView];
+}
+
+//定位传回消息
+- (void)get:(NSNotification *)not{
+    _addtf.text = not.userInfo[@"currentAdd"];
+    _lon = not.userInfo[@"lon"];
+    _lat = not.userInfo[@"lat"];
+}
+
+//头像手势
+- (void)tap:(UIGestureRecognizer *)gue{
+    UIView *view = gue.view;
+    if (view == _topView) {
+        _whochoosePhoto = @"店铺头像";
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"头像" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //拍照
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                __block UIImagePickerController *ipc = [[UIImagePickerController alloc]init];
+                ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+                ipc.delegate = self;
+                ipc.allowsEditing = YES;
+                [self presentViewController:ipc animated:YES completion:^{
+                    ipc = nil;
+                }];
+            }
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //相册
+            __block UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            //设置选择后的图片可被编辑，即可以选定任意的范围
+            picker.allowsEditing = YES;
+            picker.delegate = self;
+            picker.navigationBar.tintColor = [UIColor whiteColor];
+            picker.navigationBar.barTintColor = Color;
+            [self presentViewController:picker animated:YES completion:^{
+                picker = nil;
+            }];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else if (view == _backView){
+        [_backView removeFromSuperview];
+    }else if (view == _addYingye){
+        _whochoosePhoto = @"上传执照";
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"头像" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //拍照
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                __block UIImagePickerController *ipc = [[UIImagePickerController alloc]init];
+                ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+                ipc.delegate = self;
+                ipc.allowsEditing = NO;
+                [self presentViewController:ipc animated:YES completion:^{
+                    ipc = nil;
+                }];
+            }
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //相册
+            __block UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            //设置选择后的图片可被编辑，即可以选定任意的范围
+            picker.allowsEditing = NO;
+            picker.delegate = self;
+            picker.navigationBar.tintColor = [UIColor whiteColor];
+            picker.navigationBar.barTintColor = Color;
+            [self presentViewController:picker animated:YES completion:^{
+                picker = nil;
+            }];
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+        if ([_mesDic[@"status"] isEqualToString:@"-2"] || _canShangchuan) {
+            //在未审核状态下才能修改营业执照
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }
+    
+}
+
+//picker.delegate代理方法  选择完图片后调用
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    if ([_whochoosePhoto isEqualToString:@"店铺头像"]) {
+        UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+        //放入全局队列中保存头像
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            //将头像写入沙盒
+            _imageData = UIImageJPEGRepresentation(image, 0.5);
+            [_imageData writeToFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"chooseHead.png"] atomically:NO];
+        });
+        _headerIm.image = image;
+        //点击choose后跳转到前一页
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else if([_whochoosePhoto isEqualToString:@"上传执照"]){
+        UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+        //放入全局队列中保存头像
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            //将头像写入沙盒
+            _yingyeImData = UIImageJPEGRepresentation(image, 0.5);
+            [_yingyeImData writeToFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"choosezhizhao.png"] atomically:NO];
+        });
+        _addYingye.image = image;
+        //点击choose后跳转到前一页
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+#pragma mark -- 左边返回按钮
+- (void)barButtonItemsao:(UIButton *)sender
+{
+    self.view = nil;
+    TCTabBarViewController *tab = [[TCTabBarViewController alloc]init];
+    tab.selectedIndex = 1;
+    [self presentViewController:tab animated:YES completion:nil];
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];
+}
+
+- (void)pop{
+    
+    if (self.zhuce){
+        self.view = nil;
+        TCTabBarViewController *tab = [[TCTabBarViewController alloc]init];
+        tab.selectedIndex = 1;
+        [self presentViewController:tab animated:YES completion:nil];
+        
+        //发送通知 要求刷新页面
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+        //发送通知 要求刷新页面
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"shuaxin" object:nil];
+    }
+    
+    
+}
+
+- (void) back:(UIButton *)sender {
+   [self.navigationController popViewControllerAnimated:YES]; 
+}
+@end
+

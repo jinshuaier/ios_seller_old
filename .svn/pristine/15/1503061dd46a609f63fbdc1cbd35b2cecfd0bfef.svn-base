@@ -1,0 +1,1584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "539745478.647063"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "-clickNext:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x4fe1;&#x606f;/&#x9009;&#x62e9;&#x5730;&#x5740;/TCChooseAddressViewController.m"
+            timestampString = "539258358.646295"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "-ok:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/controller/TCShopEditViewController.m"
+            timestampString = "539072223.448863"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TCShopEditViewController imagePickerController:didFinishPickingMediaWithInfo:]"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/ThirdPage/controller/TCShopEditViewController.m"
+                  timestampString = "541935699.042119"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "606"
+                  endingLineNumber = "606"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__80-[TCShopEditViewController imagePickerController:didFinishPickingMediaWithInfo:]_block_invoke"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/ThirdPage/controller/TCShopEditViewController.m"
+                  timestampString = "541935699.045061"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "606"
+                  endingLineNumber = "606"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "962"
+            endingLineNumber = "962"
+            landmarkName = "-imagePickerController:didFinishPickingVideo:sourceAssets:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "961"
+            endingLineNumber = "961"
+            landmarkName = "-imagePickerController:didFinishPickingVideo:sourceAssets:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "810"
+            endingLineNumber = "810"
+            landmarkName = "-deleteBtnClik:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/FinancialMange&#xff08;&#x8d22;&#x52a1;&#x7ba1;&#x7406;&#xff09;/&#x8d26;&#x6237;&#x603b;&#x91d1;&#x989d;/TCWithdrawMoneyViewController.m"
+            timestampString = "539745478.662604"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "462"
+            endingLineNumber = "462"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/FinancialMange&#xff08;&#x8d22;&#x52a1;&#x7ba1;&#x7406;&#xff09;/&#x8d26;&#x6237;&#x603b;&#x91d1;&#x989d;/TCWithdrawMoneyViewController.m"
+            timestampString = "539745478.66291"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-creatRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/FinancialMange&#xff08;&#x8d22;&#x52a1;&#x7ba1;&#x7406;&#xff09;/&#x8d26;&#x6237;&#x603b;&#x91d1;&#x989d;/TCWithdrawMoneyViewController.m"
+            timestampString = "539745478.66313"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "-yanRequest"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TCWithdrawMoneyViewController yanRequest]"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/FinancialMange%EF%BC%88%E8%B4%A2%E5%8A%A1%E7%AE%A1%E7%90%86%EF%BC%89/%E8%B4%A6%E6%88%B7%E6%80%BB%E9%87%91%E9%A2%9D/TCWithdrawMoneyViewController.m"
+                  timestampString = "541935699.088917"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "289"
+                  endingLineNumber = "289"
+                  offsetFromSymbolStart = "960">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[TCWithdrawMoneyViewController yanRequest]_block_invoke"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/FinancialMange%EF%BC%88%E8%B4%A2%E5%8A%A1%E7%AE%A1%E7%90%86%EF%BC%89/%E8%B4%A6%E6%88%B7%E6%80%BB%E9%87%91%E9%A2%9D/TCWithdrawMoneyViewController.m"
+                  timestampString = "541935699.092221"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "290"
+                  endingLineNumber = "290"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/FinancialMange&#xff08;&#x8d22;&#x52a1;&#x7ba1;&#x7406;&#xff09;/&#x8d26;&#x6237;&#x603b;&#x91d1;&#x989d;/TCWithdrawMoneyViewController.m"
+            timestampString = "539745478.66335"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "-yanRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/FinancialMange&#xff08;&#x8d22;&#x52a1;&#x7ba1;&#x7406;&#xff09;/&#x8d26;&#x6237;&#x603b;&#x91d1;&#x989d;/TCWithdrawMoneyViewController.m"
+            timestampString = "539745478.6635211"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "-yanRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/FinancialMange&#xff08;&#x8d22;&#x52a1;&#x7ba1;&#x7406;&#xff09;/&#x8d26;&#x6237;&#x603b;&#x91d1;&#x989d;/TCWithdrawMoneyViewController.m"
+            timestampString = "539745478.663674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-creatRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/FinancialMange&#xff08;&#x8d22;&#x52a1;&#x7ba1;&#x7406;&#xff09;/&#x8d26;&#x6237;&#x603b;&#x91d1;&#x989d;/TCWithdrawMoneyViewController.m"
+            timestampString = "539745478.663797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-creatRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x8bbe;&#x7f6e;&#x6536;&#x6b3e;&#x4fe1;&#x606f;/&#x8bbe;&#x7f6e;&#x652f;&#x4ed8;&#x5bc6;&#x7801;/TCagainPwdViewController.m"
+            timestampString = "539258358.672148"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "-clickSure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x8bbe;&#x7f6e;&#x6536;&#x6b3e;&#x4fe1;&#x606f;/&#x8bbe;&#x7f6e;&#x652f;&#x4ed8;&#x5bc6;&#x7801;/TCagainPwdViewController.m"
+            timestampString = "539258358.673075"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "-clickSure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[TCagainPwdViewController clickSure:]_block_invoke"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/%E4%BC%A0%E8%B5%84%E8%B4%A8%E4%BF%A1%E6%81%AF/%E8%AE%BE%E7%BD%AE%E6%94%B6%E6%AC%BE%E4%BF%A1%E6%81%AF/%E8%AE%BE%E7%BD%AE%E6%94%AF%E4%BB%98%E5%AF%86%E7%A0%81/TCagainPwdViewController.m"
+                  timestampString = "541935699.126281"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "1508">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[TCagainPwdViewController clickSure:]_block_invoke"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/%E4%BC%A0%E8%B5%84%E8%B4%A8%E4%BF%A1%E6%81%AF/%E8%AE%BE%E7%BD%AE%E6%94%B6%E6%AC%BE%E4%BF%A1%E6%81%AF/%E8%AE%BE%E7%BD%AE%E6%94%AF%E4%BB%98%E5%AF%86%E7%A0%81/TCagainPwdViewController.m"
+                  timestampString = "541935699.128841"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "1524">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x4e0a;&#x4f20;&#x8eab;&#x4efd;&#x4fe1;&#x606f;/TCIDViewController.m"
+            timestampString = "539258358.673995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
+            landmarkName = "-creatRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x4e0a;&#x4f20;&#x8425;&#x4e1a;&#x6267;&#x7167;/TCLicenseViewController.m"
+            timestampString = "539258358.6748509"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "-creatRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x4e0a;&#x4f20;&#x8425;&#x4e1a;&#x6267;&#x7167;/TCLicenseViewController.m"
+            timestampString = "539258358.675707"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "-deleteimage"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x4e0a;&#x4f20;&#x8425;&#x4e1a;&#x6267;&#x7167;/TCLicenseViewController.m"
+            timestampString = "539258358.6765569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-tapView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x4e0a;&#x4f20;&#x8425;&#x4e1a;&#x6267;&#x7167;/TCLicenseViewController.m"
+            timestampString = "539258358.6772569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "-tapView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x5206;&#x4eab;&#xff08;share&#xff09;/TCShopShareViewController.m"
+            timestampString = "541661301.905701"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "-createUI"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x5206;&#x4eab;&#xff08;share&#xff09;/TCShopShareViewController.m"
+            timestampString = "541661301.991643"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "-shopShare"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "521"
+            endingLineNumber = "521"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "568"
+            endingLineNumber = "568"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "572"
+            endingLineNumber = "572"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "576"
+            endingLineNumber = "576"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "579"
+            endingLineNumber = "579"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "583"
+            endingLineNumber = "583"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[TCAddGoodsViewController createQuest:]_block_invoke.412"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/ThirdPage/ViewController/TCAddGoodsViewController.m"
+                  timestampString = "541935699.201367"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "583"
+                  endingLineNumber = "583"
+                  offsetFromSymbolStart = "332">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[TCAddGoodsViewController createQuest:]_block_invoke.412"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/ThirdPage/ViewController/TCAddGoodsViewController.m"
+                  timestampString = "541935699.2038701"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "583"
+                  endingLineNumber = "583"
+                  offsetFromSymbolStart = "348">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "876"
+            endingLineNumber = "876"
+            landmarkName = "-imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "625"
+            endingLineNumber = "625"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "630"
+            endingLineNumber = "630"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "636"
+            endingLineNumber = "636"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1044"
+            endingLineNumber = "1044"
+            landmarkName = "-pushImagePickerController"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1086"
+            endingLineNumber = "1086"
+            landmarkName = "-refreshCollectionViewWithAddedAsset:image:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "552"
+            endingLineNumber = "552"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "809"
+            endingLineNumber = "809"
+            landmarkName = "-deleteBtnClik:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "654"
+            endingLineNumber = "654"
+            landmarkName = "-convertToJsonData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "659"
+            endingLineNumber = "659"
+            landmarkName = "-convertToJsonData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "933"
+            endingLineNumber = "933"
+            landmarkName = "-goodsPicRequest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "893"
+            endingLineNumber = "893"
+            landmarkName = "-imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "884"
+            endingLineNumber = "884"
+            landmarkName = "-imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "889"
+            endingLineNumber = "889"
+            landmarkName = "-imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCShopViewController.m"
+            timestampString = "541301158.899292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "657"
+            endingLineNumber = "657"
+            landmarkName = "-requeststate:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
+            landmarkName = "-createQuest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "724"
+            endingLineNumber = "724"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "726"
+            endingLineNumber = "726"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "788"
+            endingLineNumber = "788"
+            landmarkName = "-collectionView:itemAtIndexPath:didMoveToIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "830"
+            endingLineNumber = "830"
+            landmarkName = "-deleteBtnClik:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__42-[TCAddGoodsViewController deleteBtnClik:]_block_invoke.522"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/ThirdPage/ViewController/TCAddGoodsViewController.m"
+                  timestampString = "541935699.438816"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "830"
+                  endingLineNumber = "830"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.523"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/ThirdPage/ViewController/TCAddGoodsViewController.m"
+                  timestampString = "541935699.441855"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "830"
+                  endingLineNumber = "830"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.524"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/ThirdPage/ViewController/TCAddGoodsViewController.m"
+                  timestampString = "541935699.445899"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "830"
+                  endingLineNumber = "830"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541932147.088306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "935"
+            endingLineNumber = "935"
+            landmarkName = "-goodsPicRequest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x5e97;&#x94fa;&#x5206;&#x4eab;&#xff08;share&#xff09;/TCShopShareViewController.m"
+            timestampString = "541661301.993365"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "-saveImageToPhotos:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x8bbe;&#x7f6e;&#x6536;&#x6b3e;&#x4fe1;&#x606f;/&#x6dfb;&#x52a0;&#x94f6;&#x884c;&#x5361;/TCAddBankCardViewController.m"
+            timestampString = "541664450.306326"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "-request"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TCAddBankCardViewController request]"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/%E4%BC%A0%E8%B5%84%E8%B4%A8%E4%BF%A1%E6%81%AF/%E8%AE%BE%E7%BD%AE%E6%94%B6%E6%AC%BE%E4%BF%A1%E6%81%AF/%E6%B7%BB%E5%8A%A0%E9%93%B6%E8%A1%8C%E5%8D%A1/TCAddBankCardViewController.m"
+                  timestampString = "541935699.4729919"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "315"
+                  endingLineNumber = "315"
+                  offsetFromSymbolStart = "1860">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[TCAddBankCardViewController request]_block_invoke"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/%E4%BC%A0%E8%B5%84%E8%B4%A8%E4%BF%A1%E6%81%AF/%E8%AE%BE%E7%BD%AE%E6%94%B6%E6%AC%BE%E4%BF%A1%E6%81%AF/%E6%B7%BB%E5%8A%A0%E9%93%B6%E8%A1%8C%E5%8D%A1/TCAddBankCardViewController.m"
+                  timestampString = "541935699.477073"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "316"
+                  endingLineNumber = "316"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x4f20;&#x8d44;&#x8d28;&#x4fe1;&#x606f;/&#x8bbe;&#x7f6e;&#x6536;&#x6b3e;&#x4fe1;&#x606f;/&#x6dfb;&#x52a0;&#x94f6;&#x884c;&#x5361;/TCAddBankCardViewController.m"
+            timestampString = "541664454.225495"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
+            landmarkName = "-request"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/FourthPage/ViewController/TCMessageNewsViewController.m"
+            timestampString = "541668589.4047559"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/FinancialMange&#xff08;&#x8d22;&#x52a1;&#x7ba1;&#x7406;&#xff09;/cell/TCBankTableViewCell.m"
+            timestampString = "541670609.479516"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-setModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/Login/TCLoginViewController.m"
+            timestampString = "541676821.373034"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "-clickLogin:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541677756.25758"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
+            landmarkName = "-clickNext:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TCCreateShopsViewController clickNext:]"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/TCCreateShopsViewController.m"
+                  timestampString = "541935699.511664"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "363"
+                  endingLineNumber = "363"
+                  offsetFromSymbolStart = "2552">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[TCCreateShopsViewController clickNext:]_block_invoke"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/TCCreateShopsViewController.m"
+                  timestampString = "541935699.515697"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "364"
+                  endingLineNumber = "364"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910065.539645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
+            landmarkName = "-clickNext:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TCCreateShopsViewController clickNext:]"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/TCCreateShopsViewController.m"
+                  timestampString = "541935699.525437"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "427"
+                  endingLineNumber = "427"
+                  offsetFromSymbolStart = "6352">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[TCCreateShopsViewController clickNext:]_block_invoke.382"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/TCCreateShopsViewController.m"
+                  timestampString = "541935699.530223"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "427"
+                  endingLineNumber = "427"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541904612.041423"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-creatRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541904933.088648"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
+            landmarkName = "-tapText:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/&#x9009;&#x62e9;&#x7ecf;&#x8425;&#x54c1;&#x7c7b;/TCshopStyleViewController.m"
+            timestampString = "541904958.366979"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-clickCheck:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541904997.292955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
+            landmarkName = "-tapText:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910065.539645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
+            landmarkName = "-clickNext:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910065.539645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
+            landmarkName = "-clickNext:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910065.539645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "-clickNext:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910065.539645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
+            landmarkName = "-editphoneRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910065.539645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
+            landmarkName = "-editphoneRequest"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TCCreateShopsViewController editphoneRequest]"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/TCCreateShopsViewController.m"
+                  timestampString = "541935699.601891"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "537"
+                  endingLineNumber = "537"
+                  offsetFromSymbolStart = "1936">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[TCCreateShopsViewController editphoneRequest]_block_invoke"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/TCCreateShopsViewController.m"
+                  timestampString = "541935699.605848"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "538"
+                  endingLineNumber = "538"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910065.539645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
+            landmarkName = "-editRequest"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TCCreateShopsViewController editRequest]"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/TCCreateShopsViewController.m"
+                  timestampString = "541935699.61475"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "504"
+                  endingLineNumber = "504"
+                  offsetFromSymbolStart = "1936">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__42-[TCCreateShopsViewController editRequest]_block_invoke"
+                  moduleName = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvsongsong/Desktop/ios_seller_old/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/%E9%A1%BA%E9%81%93%E5%98%89%E5%95%86%E5%AE%B6%E7%89%88/SecondPage/ViewController/TCCreateShopsViewController.m"
+                  timestampString = "541935699.619629"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "505"
+                  endingLineNumber = "505"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910065.539645"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
+            landmarkName = "-editRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910305.712442"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
+            landmarkName = "-clickNext:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/SecondPage/ViewController/TCCreateShopsViewController.m"
+            timestampString = "541910345.748333"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "464"
+            endingLineNumber = "464"
+            landmarkName = "-clickNext:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCAddGoodsViewController.m"
+            timestampString = "541933613.243762"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-createUI"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x987a;&#x9053;&#x5609;&#x5546;&#x5bb6;&#x7248;/ThirdPage/ViewController/TCShopsManaerViewController.m"
+            timestampString = "541936009.855554"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1078"
+            endingLineNumber = "1078"
+            landmarkName = "-xiajiaAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

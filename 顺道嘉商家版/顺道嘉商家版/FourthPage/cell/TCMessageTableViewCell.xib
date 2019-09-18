@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="TCMessageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="订单消息图标.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jqk-UF-fhN">
+                        <rect key="frame" x="12" y="20" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="QUm-Yf-bqx"/>
+                            <constraint firstAttribute="height" constant="40" id="xKH-Yp-CWP"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单消息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKc-Nk-1qg">
+                        <rect key="frame" x="64" y="20" width="223" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="pPB-7P-6o0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您有1000条消息，请注意查收" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDB-DH-kVu">
+                        <rect key="frame" x="64" y="43" width="223" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="9mT-aR-QRo"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="进入图标.png" translatesAutoresizingMaskIntoConstraints="NO" id="JNg-h5-V6w">
+                        <rect key="frame" x="295" y="32" width="13" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="13" id="SI3-Vj-Uut"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="提示红点.png" translatesAutoresizingMaskIntoConstraints="NO" id="etq-1H-Q8g">
+                        <rect key="frame" x="44" y="14" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="648-dj-xmr"/>
+                            <constraint firstAttribute="width" constant="12" id="IqF-fT-RNO"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JNg-h5-V6w" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="24" id="72u-0f-5AD"/>
+                    <constraint firstItem="etq-1H-Q8g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="Aoe-WT-vRT"/>
+                    <constraint firstItem="lDB-DH-kVu" firstAttribute="leading" secondItem="Jqk-UF-fhN" secondAttribute="trailing" constant="12" id="G1u-Kq-4ER"/>
+                    <constraint firstItem="cKc-Nk-1qg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="G5j-2E-TD8"/>
+                    <constraint firstItem="JNg-h5-V6w" firstAttribute="leading" secondItem="lDB-DH-kVu" secondAttribute="trailing" constant="8" id="Lro-Wr-G1q"/>
+                    <constraint firstItem="etq-1H-Q8g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="36" id="T3S-CM-8gJ"/>
+                    <constraint firstItem="JNg-h5-V6w" firstAttribute="leading" secondItem="cKc-Nk-1qg" secondAttribute="trailing" constant="8" id="YiG-qE-OQg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="JNg-h5-V6w" secondAttribute="trailing" constant="4" id="ciH-BS-aNf"/>
+                    <constraint firstItem="lDB-DH-kVu" firstAttribute="top" secondItem="cKc-Nk-1qg" secondAttribute="bottom" constant="2" id="hh0-Xc-dUa"/>
+                    <constraint firstItem="cKc-Nk-1qg" firstAttribute="leading" secondItem="Jqk-UF-fhN" secondAttribute="trailing" constant="12" id="mkn-Vh-SuF"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="JNg-h5-V6w" secondAttribute="bottom" constant="22" id="xX7-JG-PxY"/>
+                    <constraint firstItem="Jqk-UF-fhN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="xdY-aT-Hef"/>
+                    <constraint firstItem="Jqk-UF-fhN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ygd-dT-MvX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="disLabel" destination="lDB-DH-kVu" id="hfy-LB-1b4"/>
+                <outlet property="imageView" destination="Jqk-UF-fhN" id="ZtC-5b-N1a"/>
+                <outlet property="redImage" destination="etq-1H-Q8g" id="fBV-0T-Gma"/>
+                <outlet property="titleLabel" destination="cKc-Nk-1qg" id="aBc-4l-FhF"/>
+            </connections>
+            <point key="canvasLocation" x="392" y="313"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="提示红点.png" width="12" height="12"/>
+        <image name="订单消息图标.png" width="40" height="40"/>
+        <image name="进入图标.png" width="9" height="15"/>
+    </resources>
+</document>

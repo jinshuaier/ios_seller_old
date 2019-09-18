@@ -1,0 +1,717 @@
+//
+//  TCShopImageViewController.m
+//  顺道嘉商家版
+//
+//  Created by 吕松松 on 2018/1/8.
+//  Copyright © 2018年 北京同创共享网络科技有限公司. All rights reserved.
+//
+
+#import "TCShopImageViewController.h"
+#import "TZImagePickerController.h"
+#import <objc/runtime.h>
+#import <objc/message.h>
+#import "UIView+Layout.h"
+#import "TZTestCell.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
+#import "LxGridViewFlowLayout.h"
+#import "TZImageManager.h"
+#import "TZVideoPlayerController.h"
+#import "TZPhotoPreviewController.h"
+
+
+@interface TCShopImageViewController ()<UIScrollViewDelegate,UIGestureRecognizerDelegate,TZImagePickerControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+{
+    NSMutableArray *_selectedPhotos;
+    NSMutableArray *_selectedAssets;
+    NSMutableArray *returnPhotos;
+    BOOL _isSelectOriginalPhoto;
+    
+    CGFloat _itemWH;
+    CGFloat _margin;
+}
+@property (nonatomic, strong) UIImagePickerController *imagePickerVc;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (strong, nonatomic) LxGridViewFlowLayout *layout;
+@property (strong, nonatomic) CLLocation *location;
+@property (nonatomic, strong) NSUserDefaults *userdefault;
+@property (nonatomic, strong) UIScrollView *myScrollView;
+@property (nonatomic, strong) UIImageView *doorImage;
+@property (nonatomic, strong) UIButton *chuanBtn;
+@property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UIButton *sureBtn;
+@property (nonatomic, assign) BOOL isDoor;
+@property (nonatomic, strong) NSData *imageData;//用来记录选取的图片
+@property (nonatomic, strong) UIImageView *egImage;
+@property (nonatomic, strong) NSData *shopPicData;
+
+@end
+
+@implementation TCShopImageViewController
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+- (UIImagePickerController *)imagePickerVc {
+    if (_imagePickerVc == nil) {
+        _imagePickerVc = [[UIImagePickerController alloc] init];
+        _imagePickerVc.delegate = self;
+        // set appearance / 改变相册选择页的导航栏外观
+        _imagePickerVc.navigationBar.barTintColor = self.navigationController.navigationBar.barTintColor;
+        _imagePickerVc.navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
+        UIBarButtonItem *tzBarItem, *BarItem;
+        if (iOS9Later) {
+            tzBarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[TZImagePickerController class]]];
+            BarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UIImagePickerController class]]];
+        } else {
+            tzBarItem = [UIBarButtonItem appearanceWhenContainedIn:[TZImagePickerController class], nil];
+            BarItem = [UIBarButtonItem appearanceWhenContainedIn:[UIImagePickerController class], nil];
+        }
+        NSDictionary *titleTextAttributes = [tzBarItem titleTextAttributesForState:UIControlStateNormal];
+        [BarItem setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
+    }
+    return _imagePickerVc;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"上传店铺照片";
+    self.view.backgroundColor = TCBgColor;
+    self.userdefault = [NSUserDefaults standardUserDefaults];
+    //初始化数组
+    
+    _selectedPhotos = [NSMutableArray array];
+    _selectedAssets = [NSMutableArray array];
+    returnPhotos = [NSMutableArray array];
+    [self creatRequest];
+    [self creatUI];
+    
+    // Do any additional setup after loading the view.
+}
+-(void)creatUI{
+    UIView *view1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDHT, 58)];
+    view1.backgroundColor = TCUIColorFromRGB(0xFFFFFF);
+    [self.view addSubview:view1];
+    
+    UILabel *jielabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 20, WIDHT - 30, 18)];
+    jielabel.text  = @"店铺照片会对外展示，需要您按照要求排除清晰照片";
+    jielabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
+    jielabel.textColor = TCUIColorFromRGB(0x53C3C3);
+    jielabel.textAlignment = NSTextAlignmentLeft;
+    [view1 addSubview:jielabel];
+    
+    _myScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view1.frame), WIDHT, HEIGHT - 58)];
+    _myScrollView.contentSize = CGSizeMake(WIDHT, HEIGHT *1.3);
+    _myScrollView.delegate = self;
+    _myScrollView.showsVerticalScrollIndicator = false;
+    _myScrollView.showsHorizontalScrollIndicator = false;
+    [self.view addSubview:_myScrollView];
+    
+    UIView *view2 = [[UIView alloc]initWithFrame:CGRectMake(0,10, WIDHT, 226)];
+    view2.backgroundColor = TCUIColorFromRGB(0xFFFFFF);
+    [self.myScrollView addSubview:view2];
+    
+    UILabel *doorLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 20, 45, 15)];
+    doorLabel.text = @"门脸照";
+    doorLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+    doorLabel.textColor = TCUIColorFromRGB(0x333333);
+    doorLabel.textAlignment = NSTextAlignmentLeft;
+    [view2 addSubview:doorLabel];
+    
+    UIButton *lookBtn = [[UIButton alloc]initWithFrame:CGRectMake(WIDHT - 15 - 100, 20, 100, 15)];
+    [lookBtn setTitle:@"查看实例照片" forState:(UIControlStateNormal)];
+    [lookBtn setTitleColor:TCUIColorFromRGB(0x53C2C2) forState:(UIControlStateNormal)];
+    [lookBtn addTarget:self action:@selector(clicklook) forControlEvents:(UIControlEventTouchUpInside)];
+    lookBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+    lookBtn.titleLabel.textAlignment = NSTextAlignmentRight;
+    [view2 addSubview:lookBtn];
+    
+    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(lookBtn.frame) + 20, WIDHT - 30, 1)];
+    line.backgroundColor = TCLineColor;
+    [view2 addSubview:line];
+    
+    self.doorImage = [[UIImageView alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(line.frame) + 20, 120, 120)];
+    self.doorImage.userInteractionEnabled = YES;
+    self.doorImage.image = [UIImage imageNamed:@"1"];
+    [view2 addSubview:self.doorImage];
+    UITapGestureRecognizer *tapView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImage)];
+    [self.doorImage addGestureRecognizer:tapView];
+    
+    UIImageView *egImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    self.egImage = egImage;
+    egImage.image = [UIImage imageNamed:@"例"];
+    [self.doorImage addSubview:egImage];
+    
+    UILabel *tiLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.doorImage.frame) + 10, CGRectGetMaxY(line.frame) + 18, WIDHT - 120 - 30 - 10, 36)];
+    tiLabel.text = @"需拍出完整门匾、门框（建议正对门店2米处拍照）";
+    tiLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
+    tiLabel.textColor = TCUIColorFromRGB(0x999E9C);
+    tiLabel.textAlignment = NSTextAlignmentLeft;
+    tiLabel.numberOfLines = 0;
+    tiLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    CGSize size = [tiLabel sizeThatFits:CGSizeMake(WIDHT - 120 - 30 - 10, MAXFLOAT)];//根据文字的长度返回一个最佳宽度和高度
+    tiLabel.frame = CGRectMake(CGRectGetMaxX(self.doorImage.frame) + 10, CGRectGetMaxY(line.frame) + 18, WIDHT - 120 - 30 - 10, size.height);
+    [view2 addSubview:tiLabel];
+    
+    self.chuanBtn = [[UIButton alloc]initWithFrame:CGRectMake(WIDHT - 15 - 120, CGRectGetMaxY(line.frame) + 106, 120, 34)];
+    [self.chuanBtn setTitle:@"上传" forState:(UIControlStateNormal)];
+    [self.chuanBtn setTitleColor:TCUIColorFromRGB(0xFFFFFF) forState:(UIControlStateNormal)];
+    [self.chuanBtn setBackgroundColor:TCUIColorFromRGB(0x53C3C3)];
+    self.chuanBtn.layer.masksToBounds = YES;
+    self.chuanBtn.layer.cornerRadius = 5;
+    [self.chuanBtn addTarget:self action:@selector(chuanPic) forControlEvents:(UIControlEventTouchUpInside)];
+    self.chuanBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
+    self.chuanBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [view2 addSubview:self.chuanBtn];
+    
+    _itemWH = (WIDHT - 60)/4;
+    
+    self.bgView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view2.frame) + 10, WIDHT, 30)];
+    self.bgView.backgroundColor = TCUIColorFromRGB(0xFFFFFF);
+    [self.myScrollView addSubview:self.bgView];
+    
+    
+    
+    UILabel *topLabel = [[UILabel alloc]initWithFrame:CGRectMake(15,15, 77, 14)];
+    topLabel.text = @"店内环境图";
+    topLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
+    topLabel.textColor = TCUIColorFromRGB(0x333333);
+    topLabel.textAlignment = NSTextAlignmentLeft;
+    [self.bgView addSubview:topLabel];
+    
+    UILabel *grayLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(topLabel.frame), 16, WIDHT - 77 - 30, 12)];
+    grayLabel.text = @"(需真实反映店内环境（收银台，餐桌等）)";
+    grayLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+    grayLabel.textColor = TCUIColorFromRGB(0x9F9D9B);
+    grayLabel.textAlignment = NSTextAlignmentLeft;
+    [self.bgView addSubview:grayLabel];
+    
+    _layout = [[LxGridViewFlowLayout alloc]init];
+    _margin = 10;
+    
+    _layout.itemSize = CGSizeMake(_itemWH, _itemWH);
+    _layout.minimumInteritemSpacing = _margin;
+    _layout.minimumLineSpacing = _margin;
+    
+    _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(self.bgView.frame), WIDHT, _itemWH + 10 + 15 + 10)collectionViewLayout:_layout];
+    _layout.panGestureRecognizerEnable = NO;
+    _collectionView.backgroundColor = TCUIColorFromRGB(0xFFFFFF);
+    _collectionView.contentInset = UIEdgeInsetsMake(15,15,10,15);
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+
+    [self.myScrollView addSubview:self.collectionView];
+    
+   
+    [self.collectionView registerClass:[TZTestCell class] forCellWithReuseIdentifier:@"TZTestCell"];
+    self.sureBtn = [[UIButton alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(self.collectionView.frame) + 40, WIDHT - 30, 48)];
+    [self.sureBtn setBackgroundColor:TCUIColorFromRGB(0x53C3C3)];
+    [self.sureBtn setTitle:@"保存" forState:(UIControlStateNormal)];
+    [self.sureBtn setTitleColor:TCUIColorFromRGB(0xFFFFFF) forState:(UIControlStateNormal)];
+    self.sureBtn.layer.masksToBounds = YES;
+    self.sureBtn.layer.cornerRadius = 5;
+    [self.sureBtn addTarget:self action:@selector(clickSure:) forControlEvents:(UIControlEventTouchUpInside)];
+    self.sureBtn.userInteractionEnabled = YES;
+    self.sureBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:17];
+    self.sureBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.myScrollView addSubview:self.sureBtn];
+    
+}
+
+-(void)creatRequest{
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"获取中..."];    NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+    NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+    NSString *Timestr = [TCGetTime getCurrentTime];
+    NSString *shopID =[NSString stringWithFormat:@"%@",[_userdefault valueForKey:@"shopID"]];
+    NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"shopid":shopID,@"type":@"4"};
+    NSString *signStr = [TCServerSecret loginStr:dic];
+    NSDictionary *paramters = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"shopid":shopID,@"type":@"4",@"sign":signStr};
+    [TCNetworking postWithTcUrlString:[TCServerSecret loginAndRegisterSecretOffline:@"201020"] paramter:paramters success:^(NSString *jsonStr, NSDictionary *jsonDic) {
+        NSLog(@"%@---%@",jsonDic,jsonStr);
+        NSString *codestr = [NSString stringWithFormat:@"%@",jsonDic[@"code"]];
+        if ([codestr isEqualToString:@"1"]) {
+            [returnPhotos removeAllObjects];
+            NSString *imagStr = [NSString stringWithFormat:@"%@",jsonDic[@"data"][@"headPic"][@"imageid"]];
+            if ([imagStr isEqualToString:@"0"]) {
+                self.egImage.hidden = NO;
+                [self.chuanBtn setTitle:@"上传" forState:(UIControlStateNormal)];
+            }else{
+                [self.doorImage sd_setImageWithURL:[NSURL URLWithString: jsonDic[@"data"][@"headPic"][@"src"]]];
+                self.egImage.hidden = YES;
+                [self.chuanBtn setTitle:@"重新上传" forState:(UIControlStateNormal)];
+            }
+            
+            [returnPhotos removeAllObjects];
+            for (NSDictionary *dicinfo in jsonDic[@"data"][@"shopPic"]) {
+                NSString *imageid = [NSString stringWithFormat:@"%@",dicinfo[@"imageid"]];
+                NSString *src = [NSString stringWithFormat:@"%@",dicinfo[@"src"]];
+                NSDictionary *dicy = @{@"imageid":imageid,@"src":src};
+                [returnPhotos addObject:dicy];
+            }
+            [self.collectionView reloadData];
+            
+            if (returnPhotos.count > 7) {
+                _collectionView.frame = CGRectMake(0, CGRectGetMaxY(self.bgView.frame), WIDHT, 3*(_itemWH + 10) + 10 + 15);
+            }else if (returnPhotos.count > 3){
+                _collectionView.frame = CGRectMake(0, CGRectGetMaxY(self.bgView.frame), WIDHT,(_itemWH + 10) * 2 + 10  + 15 );
+            }else{
+                _collectionView.frame = CGRectMake(0, CGRectGetMaxY(self.bgView.frame), WIDHT,(_itemWH + 10) + 10  + 15 );
+            }
+            self.sureBtn.frame = CGRectMake(15, CGRectGetMaxY(self.collectionView.frame) + 40, WIDHT - 30, 48);
+        }else{
+            [TCProgressHUD showMessage:jsonDic[@"msg"]];
+        }
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *error) {
+        nil;
+    }];
+}
+
+-(void)tapImage{
+    NSLog(@"点击看大图");
+}
+
+#pragma mark -- 点击保存
+-(void)clickSure:(UIButton *)sender{
+   // [[NSNotificationCenter defaultCenter] postNotificationName:@"returnshopinfo" object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+    
+
+-(void)chuanPic{
+    _isDoor = YES;
+    [self clickalphaView];
+}
+-(void)clickalphaView{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选择图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //拍照
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            __block UIImagePickerController *ipc = [[UIImagePickerController alloc]init];
+            ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+            ipc.delegate = self;
+            ipc.allowsEditing = YES;
+            [self presentViewController:ipc animated:YES completion:^{
+                ipc = nil;
+            }];
+        }
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //相册
+        __block UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        //设置选择后的图片可被编辑，即可以选定任意的范围
+        picker.allowsEditing = YES;
+        picker.delegate = self;
+        picker.navigationBar.tintColor = [UIColor whiteColor];
+        picker.navigationBar.barTintColor = Color;
+        [self presentViewController:picker animated:YES completion:^{
+            picker = nil;
+        }];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+    
+}
+
+
+-(void)clicklook{
+    NSLog(@"看大图");
+}
+
+#pragma mark UICollectionView
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (returnPhotos.count >= 9) {
+        return 9;
+    }else{
+        return returnPhotos.count + 1;
+    }
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    //TZTestCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TZTestCell" forIndexPath:indexPath];
+    TZTestCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TZTestCell" forIndexPath:indexPath];
+   
+    if (indexPath.row == returnPhotos.count) {
+        cell.imageView.image = [UIImage imageNamed:@"上传图片"];
+        cell.deleteBtn.hidden = YES;
+    } else {
+//        cell.imageView.image = returnPhotos[indexPath.row][@"src"];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:returnPhotos[indexPath.row][@"src"]] placeholderImage:[UIImage imageNamed:@""]];
+        cell.deleteBtn.hidden = NO;
+    }
+    cell.deleteBtn.tag = indexPath.row +   1;
+    [cell.deleteBtn addTarget:self action:@selector(deleteBtnClik:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == returnPhotos.count) {
+        _isDoor = NO;
+        //是否谈出来选择
+        BOOL showSheet = YES;
+        if (showSheet) {
+            UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"去相册选择", nil];
+            [sheet showInView:self.view];
+        } else {
+            [self pickPhotoButtonClick:nil];
+        }
+    } else { // preview photos / 预览照片
+//        TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithSelectedAssets:_selectedAssets selectedPhotos:returnPhotos index:indexPath.row];
+//        imagePickerVc.isSelectOriginalPhoto = _isSelectOriginalPhoto;
+//        // imagePickerVc.allowPickingOriginalPhoto = NO;
+//        [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+//            _selectedPhotos = [NSMutableArray arrayWithArray:photos];
+//            _selectedAssets = [NSMutableArray arrayWithArray:assets];
+//            _isSelectOriginalPhoto = isSelectOriginalPhoto;
+//            _layout.itemCount = returnPhotos.count;
+//        }];
+//        [self presentViewController:imagePickerVc animated:YES completion:nil];
+        nil;
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)sourceIndexPath didMoveToIndexPath:(NSIndexPath *)destinationIndexPath {
+    if (sourceIndexPath.item >= _selectedPhotos.count || destinationIndexPath.item >= _selectedPhotos.count) return;
+    UIImage *image = _selectedPhotos[sourceIndexPath.item];
+    if (image) {
+        [_selectedPhotos exchangeObjectAtIndex:sourceIndexPath.item withObjectAtIndex:destinationIndexPath.item];
+        [_selectedAssets exchangeObjectAtIndex:sourceIndexPath.item withObjectAtIndex:destinationIndexPath.item];
+       // [_collectionView reloadData];
+    }
+}
+
+
+-(void)pickPhotoButtonClick:(UIButton *)sender{
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    imagePickerVc.isSelectOriginalPhoto = _isSelectOriginalPhoto;
+    imagePickerVc.selectedAssets = _selectedAssets; // optional, 可选的
+    imagePickerVc.allowTakePicture = NO; // 隐藏拍照按钮
+    
+    // You can get the photos by block, the same as by delegate.
+    // 你可以通过block或者代理，来得到用户选择的照片.
+    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+        NSLog(@"%@",photos);
+    }];
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
+}
+
+
+#pragma mark Click Event
+
+- (void)deleteBtnClik:(UIButton *)sender {
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:sender.tag inSection:0];
+    NSInteger i = sender.tag - 1;
+    NSString *imageid = returnPhotos[i][@"imageid"];
+    [self delePicRequest:imageid];
+        
+
+        
+
+}
+
+-(void)delePicRequest:(NSString *)imageid{
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"获取中..."];
+    NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+    NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+    NSString *Timestr = [TCGetTime getCurrentTime];
+    NSString *shopID =[NSString stringWithFormat:@"%@",[_userdefault valueForKey:@"shopID"]];
+    NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"shopid":shopID,@"imageid":imageid};
+    NSString *signStr = [TCServerSecret loginStr:dic];
+    NSDictionary *paramters = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"shopid":shopID,@"imageid":imageid,@"sign":signStr};
+    [TCNetworking postWithTcUrlString:[TCServerSecret loginAndRegisterSecretOffline:@"201009"] paramter:paramters success:^(NSString *jsonStr, NSDictionary *jsonDic) {
+        NSLog(@"%@---%@",jsonDic,jsonStr);
+        NSString *codeStr = [NSString stringWithFormat:@"%@",jsonDic[@"code"]];
+        if ([codeStr isEqualToString:@"1"]) {
+            [self creatRequest];
+        }else{
+            [TCProgressHUD showMessage: jsonDic[@"msg"]];
+        }
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *error) {
+        nil;
+    }];
+}
+
+#pragma mark TZImagePickerControllerDelegate
+
+/// User click cancel button
+/// 用户点击了取消
+- (void)imagePickerControllerDidCancel:(TZImagePickerController *)picker {
+    //     NSLog(@"cancel");
+    if ([picker isKindOfClass:[UIImagePickerController class]]) {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+}
+
+#pragma mark -- 上传门脸图到服务器
+-(void)imageQuest:(NSString *)typeStr{
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"获取中..."];
+    NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+    NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+    NSString *Timestr = [TCGetTime getCurrentTime];
+    NSString *shopID =[NSString stringWithFormat:@"%@",[_userdefault valueForKey:@"shopID"]];
+    NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"shopid":shopID,@"type":typeStr};
+    NSString *signStr = [TCServerSecret loginStr:dic];
+    NSDictionary *paramters = @{@"mid":mid,@"token":token,@"timestamp":Timestr,@"sign":signStr,@"shopid":shopID,@"type":typeStr};
+    //提交修改，上传图片至服务器
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager POST:[TCServerSecret loginAndRegisterSecretOffline:@"201006"] parameters:paramters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        //开始滚动
+        if (self.imageData) {
+            [formData appendPartWithFileData:self.imageData  name:@"shop_head_pic" fileName:@"shop_head_pic.png" mimeType:@"image/png"];
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        
+        NSLog(@"提交图片的返回结果 %@", dic[@"msg"]);
+        NSString *codeStr = [NSString stringWithFormat:@"%@",dic[@"code"]];
+        if ([codeStr isEqualToString:@"1"]) {
+            [TCProgressHUD showMessage:dic[@"msg"]];
+            [self creatRequest];
+        }else{
+            [TCProgressHUD showMessage:dic[@"msg"]];
+        }
+        [SVProgressHUD dismiss];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        nil;
+    }];
+    
+}
+
+//上传店内环境图片
+-(void)shopPicRequest:(NSString *)typeStr:(NSData *)imageData{
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD showWithStatus:@"获取中..."];    NSString *mid = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userID"]];
+    NSString *token = [NSString stringWithFormat:@"%@",[self.userdefault valueForKey:@"userToken"]];
+    NSString *Timestr = [TCGetTime getCurrentTime];
+    NSString *shopID =[NSString stringWithFormat:@"%@",[_userdefault valueForKey:@"shopID"]];
+    NSDictionary *dic = @{@"timestamp":Timestr,@"mid":mid,@"token":token,@"shopid":shopID,@"type":typeStr};
+    NSString *signStr = [TCServerSecret loginStr:dic];
+    NSDictionary *paramters = @{@"mid":mid,@"token":token,@"timestamp":Timestr,@"sign":signStr,@"shopid":shopID,@"type":typeStr};
+    //提交修改，上传图片至服务器
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager POST:[TCServerSecret loginAndRegisterSecretOffline:@"201006"] parameters:paramters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        //开始滚动
+        if (imageData) {
+            [formData appendPartWithFileData:imageData  name:@"shop_pic" fileName:@"shop_pic.png" mimeType:@"image/png"];
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        
+        NSLog(@"提交图片的返回结果 %@", dic[@"msg"]);
+        NSString *codeStr = [NSString stringWithFormat:@"%@",dic[@"code"]];
+        if ([codeStr isEqualToString:@"1"]) {
+            [TCProgressHUD showMessage:dic[@"msg"]];
+            [self creatRequest];
+        }else{
+            [TCProgressHUD showMessage:dic[@"msg"]];
+        }
+        [SVProgressHUD dismiss];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        nil;
+    }];
+}
+
+// 用户选择好了图片，如果assets非空，则用户选择了原图。
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
+    
+    _selectedPhotos = [NSMutableArray arrayWithArray:photos];
+    _selectedAssets = [NSMutableArray arrayWithArray:assets];
+    _isSelectOriginalPhoto = isSelectOriginalPhoto;
+    _layout.itemCount = _selectedPhotos.count;
+    for (int i = 0; i < _selectedPhotos.count; i++) {
+        UIImage *image = _selectedPhotos[i];
+        //放入全局队列中保存头像
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            //将头像写入沙盒
+            self.shopPicData = UIImageJPEGRepresentation(image, 0.3);
+            [self.shopPicData writeToFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Document"]stringByAppendingPathComponent:@"store.png"] atomically:YES];
+            [self shopPicRequest:@"4" :self.shopPicData];
+        });
+    }
+//    [_collectionView reloadData];
+//    if (_selectedPhotos.count > 7) {
+//         _collectionView.frame = CGRectMake(0, CGRectGetMaxY(self.bgView.frame), WIDHT, 3*(_itemWH + 10) + 10 + 15);
+//    }else if (_selectedPhotos.count > 3){
+//         _collectionView.frame = CGRectMake(0, CGRectGetMaxY(self.bgView.frame), WIDHT,(_itemWH + 10) * 2 + 10  + 15 );
+//    }else{
+//        _collectionView.frame = CGRectMake(0, CGRectGetMaxY(self.bgView.frame), WIDHT,(_itemWH + 10) + 10  + 15 );
+//    }
+//    self.sureBtn.frame = CGRectMake(15, CGRectGetMaxY(self.collectionView.frame) + 40, WIDHT - 30, 48);
+    //    _collectionView.contentSize = CGSizeMake(0, ((_selectedPhotos.count + 3) / 4 ) * (_margin + _itemWH));
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) { // take photo / 去拍照
+        [self takePhoto];
+    } else if (buttonIndex == 1) {
+        //选择图片
+        [self pickPhotoButtonClick:nil];
+    }
+}
+
+#pragma mark - UIImagePickerController
+
+- (void)takePhoto {
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if ((authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) && iOS7Later) {
+        // 无相机权限 做一个友好的提示
+        if (iOS8Later) {
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+            [alert show];
+        } else {
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法使用相机" message:@"请在iPhone的""设置-隐私-相机""中允许访问相机" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+        // fix issue 466, 防止用户首次拍照拒绝授权时相机页黑屏
+        if (iOS7Later) {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                if (granted) {
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [self takePhoto];
+                    });
+                }
+            }];
+        } else {
+            [self takePhoto];
+        }
+        // 拍照之前还需要检查相册权限
+    } else if ([TZImageManager authorizationStatus] == 2) { // 已被拒绝，没有相册权限，将无法保存拍的照片
+        if (iOS8Later) {
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法访问相册" message:@"请在iPhone的""设置-隐私-相册""中允许访问相册" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+            [alert show];
+        } else {
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"无法访问相册" message:@"请在iPhone的""设置-隐私-相册""中允许访问相册" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+    } else if ([TZImageManager authorizationStatus] == 0) { // 未请求过相册权限
+        [[TZImageManager manager] requestAuthorizationWithCompletion:^{
+            [self takePhoto];
+        }];
+    } else {
+        [self pushImagePickerController];
+    }
+}
+// 调用相机
+- (void)pushImagePickerController {
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        self.imagePickerVc.sourceType = sourceType;
+        if(iOS8Later) {
+            _imagePickerVc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        }
+        [self presentViewController:_imagePickerVc animated:YES completion:nil];
+    } else {
+        NSLog(@"模拟器中无法打开照相机,请在真机中使用");
+    }
+}
+- (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    if (_isDoor == NO) {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+        NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+        if ([type isEqualToString:@"public.image"]) {
+            TZImagePickerController *tzImagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+            tzImagePickerVc.sortAscendingByModificationDate = YES;
+            [tzImagePickerVc showProgressHUD];
+            UIImage *oldimage = [info objectForKey:UIImagePickerControllerOriginalImage];
+            UIImage *image = [oldimage fixOrientation];
+            
+            [[TZImageManager manager] savePhotoWithImage:image location:self.location completion:^(NSError *error){
+                if (error) {
+                    [tzImagePickerVc hideProgressHUD];
+                    NSLog(@"图片保存失败 %@",error);
+                } else {
+                    // BOOL allowCrop = YES;
+                    [[TZImageManager manager] getCameraRollAlbum:NO allowPickingImage:YES completion:^(TZAlbumModel *model) {
+                        [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
+                            [tzImagePickerVc hideProgressHUD];
+                            TZAssetModel *assetModel = [models firstObject];
+                            if (tzImagePickerVc.sortAscendingByModificationDate) {
+                                assetModel = [models lastObject];
+                            }
+                            [self refreshCollectionViewWithAddedAsset:assetModel.asset image:image];
+                            //                        }
+                        }];
+                    }];
+                }
+            }];
+        }
+    }else{
+            UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+            //放入全局队列中保存头像
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                //将头像写入沙盒
+                _imageData = UIImageJPEGRepresentation(image, 0.5);
+                [_imageData writeToFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"store.png"] atomically:YES];
+                 [self imageQuest:@"5"];
+            });
+        [self dismissViewControllerAnimated:YES completion:nil];
+       
+
+    }
+    
+}
+- (void)refreshCollectionViewWithAddedAsset:(id)asset image:(UIImage *)image {
+    [_selectedAssets addObject:asset];
+    [_selectedPhotos addObject:image];
+   // [_collectionView reloadData];
+    for (int i = 0; i < _selectedPhotos.count; i++) {
+        NSString *imageStr = [NSString stringWithFormat:@"%@",_selectedPhotos[i]];
+        if ([imageStr containsString:@"http"]){
+            
+        }else{
+            UIImage *image = _selectedPhotos[i];
+            [image fixOrientation];
+            //放入全局队列中保存头像
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                //将头像写入沙盒
+                self.shopPicData = UIImageJPEGRepresentation(image, 0.3);
+                [self.shopPicData writeToFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Document"]stringByAppendingPathComponent:@"store.png"] atomically:YES];
+                [self shopPicRequest:@"4" :self.shopPicData];
+                
+            });
+            if ([asset isKindOfClass:[PHAsset class]]) {
+                PHAsset *phAsset = asset;
+                NSLog(@"location:%@",phAsset.location);
+            }
+        }
+    }
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) { // 去设置界面，开启相机访问权限
+        if (iOS8Later) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

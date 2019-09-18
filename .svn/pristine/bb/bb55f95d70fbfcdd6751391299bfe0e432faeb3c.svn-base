@@ -1,0 +1,178 @@
+//
+//  TCUpdateView.m
+//  顺道嘉(新)
+//
+//  Created by 某某 on 16/10/26.
+//  Copyright © 2016年 Macx. All rights reserved.
+//
+
+#import "TCUpdateView.h"
+#import "AppDelegate.h"
+
+static TCUpdateView *upview = nil;
+@interface TCUpdateView()
+@property (nonatomic, strong) UIView *backView;
+@property (nonatomic, strong) UIButton *leftBtn;
+@property (nonatomic, strong) UIButton *rightBtn;
+@property (nonatomic, strong) UIView *showView;
+@property (nonatomic, strong) UILabel *lb2;
+@property (nonatomic, strong) NSString *versionStr;
+@end
+
+@implementation TCUpdateView
+
++ (id)upDateView:(NSString *)version{
+    if (upview == nil) {
+        upview = [[TCUpdateView alloc] initMessage:version];
+        
+    }
+    return upview;
+}
+
+- (id)initMessage:(NSString *)version{
+    if(self == [super init]){
+        self.versionStr = version;
+        [self versionUpdate];
+    }
+    return self;
+}
+
+//- (id)init{
+//    if (self == [super init]) {
+//       [self versionUpdate];
+//    }
+//    return self;
+//}
+
+- (void)create{
+    _backView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    _backView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.5];
+    _backView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hah)];
+    [_backView addGestureRecognizer:tap];
+    [[UIApplication sharedApplication].keyWindow addSubview: _backView];
+
+    _showView = [[UIView alloc]initWithFrame:CGRectMake(32 * WIDHTSCALE, HEIGHT / 2 - 60*HEIGHTSCALE, WIDHT - 64 * WIDHTSCALE, 120 * HEIGHTSCALE)];
+    _showView.backgroundColor = [UIColor lightGrayColor];
+    _showView.layer.cornerRadius = 10 * HEIGHTSCALE;
+    _showView.layer.masksToBounds = YES;
+    _showView.userInteractionEnabled = YES;
+    [_backView addSubview: _showView];
+
+    UILabel *lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _showView.frame.size.width, 69 * HEIGHTSCALE)];
+    lb.text = @"发现新版本";
+    lb.textColor = TCUIColorFromRGB(0x333333);
+    lb.font = [UIFont systemFontOfSize:18 * HEIGHTSCALE];
+    lb.textAlignment = NSTextAlignmentCenter;
+    lb.backgroundColor = [UIColor whiteColor];
+    [_showView addSubview:lb];
+
+    _leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [_leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+    _leftBtn.userInteractionEnabled = YES;
+    [_leftBtn setTitleColor:TCUIColorFromRGB(0x333333) forState:UIControlStateNormal];
+    _leftBtn.backgroundColor = [UIColor whiteColor];
+    _leftBtn.frame = CGRectMake(0, _showView.frame.size.height - 50 * HEIGHTSCALE, _showView.frame.size.width / 2 - 0.5, 50 * HEIGHTSCALE);
+    _leftBtn.titleLabel.font = [UIFont systemFontOfSize:18 * HEIGHTSCALE];
+    [_leftBtn addTarget:self action:@selector(mis) forControlEvents:UIControlEventTouchUpInside];
+    [_showView addSubview: _leftBtn];
+
+    _rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [_rightBtn setTitleColor:TCUIColorFromRGB(0x333333) forState:UIControlStateNormal];
+    [_rightBtn setTitle:@"更新" forState:UIControlStateNormal];
+    _rightBtn.backgroundColor = [UIColor whiteColor];
+    _rightBtn.frame = CGRectMake(_leftBtn.frame.origin.x + _leftBtn.frame.size.width + 1, _leftBtn.frame.origin.y, _leftBtn.frame.size.width, _leftBtn.frame.size.height);
+    _rightBtn.titleLabel.font = [UIFont systemFontOfSize:18 * HEIGHTSCALE];
+    [_rightBtn addTarget:self action:@selector(go) forControlEvents:UIControlEventTouchUpInside];
+    [_showView addSubview: _rightBtn];
+
+    UIView *newview = [[UIView alloc]initWithFrame:CGRectMake(0, lb.frame.size.height, _showView.frame.size.width, _showView.frame.size.height - _leftBtn.frame.size.height - 1 - lb.frame.size.height)];
+    newview.backgroundColor = [UIColor whiteColor];
+    [_showView addSubview: newview];
+    UILabel *lb2 = [[UILabel alloc]initWithFrame:CGRectMake(20 * WIDHTSCALE, 0, _showView.frame.size.width - 40 * WIDHTSCALE, newview.frame.size.height)];
+    lb2.text = @"";
+    lb2.font = [UIFont systemFontOfSize:15 * HEIGHTSCALE];
+    lb2.textColor = RGB(102, 102, 102);
+    lb2.textAlignment = NSTextAlignmentCenter;
+    lb2.numberOfLines = 0;
+    _lb2 = lb2;
+    [newview addSubview: lb2];
+
+}
+
+- (void)hah{
+    NSLog(@"123");
+}
+
+//版本更新
+- (void)versionUpdate{
+    NSLog(@"检测版本");
+    //获得当前发布的版本
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        // 耗时的操作---获取某个应用在AppStore上的信息，更改id就行
+//        NSString *string = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"https://itunes.apple.com/lookup?id=1151304737"]];
+//        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+//        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+//        NSLog(@"%@",dic);
+//        NSString *version = [[[dic objectForKey:@"results"]firstObject]objectForKey:@"version"];//线上版本号
+//        NSString *updateInfo = [[[dic objectForKey:@"results"]firstObject]objectForKey:@"releaseNotes"];//线上当前版本的更新提示
+        //获得当前版本
+        NSString *currentVersion = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleShortVersionString"];
+        //NSLog(@"dic %@", dic);
+        NSLog(@"店铺版本%@ 当前版本%@", _versionStr, currentVersion);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 更新界面
+            if (_versionStr &&![_versionStr isEqualToString:currentVersion]) {
+                //有新版本
+                [self create];
+                _showView.transform = CGAffineTransformScale(_showView.transform, 0.01, 0.01);
+                [UIView animateWithDuration:0.3 animations:^{
+                    _showView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.2 animations:^{
+                        _showView.transform = CGAffineTransformIdentity;
+                    }];
+                }];
+//                NSString *message = [NSString stringWithFormat:@"%@",updateInfo];
+                //_lb2.text = message;
+            }else{
+                //已是最高版本
+                NSLog(@"已经是最高版本");
+            }
+        });
+    //});
+}
+
+
+
+- (void)mis{
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    UIWindow *window = app.window;
+
+    [UIView animateWithDuration:1.0f animations:^{
+        window.alpha = 0;
+        window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
+    exit(0);
+}
+
+- (void)go{
+    [_backView removeFromSuperview];
+    NSString *url = @"https://itunes.apple.com/cn/app/id1151304737?mt=8";
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
+    
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    UIWindow *window = app.window;
+    
+    [UIView animateWithDuration:1.0f animations:^{
+        window.alpha = 0;
+        window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
+    exit(0);
+}
+
+@end

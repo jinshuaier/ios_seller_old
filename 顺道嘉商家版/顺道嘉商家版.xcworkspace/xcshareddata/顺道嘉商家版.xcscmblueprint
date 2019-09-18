@@ -1,0 +1,35 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "eefa302f-ac2c-47db-80a1-35b2191b6bfc++9284",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "eefa302f-ac2c-47db-80a1-35b2191b6bfc++7803" : {
+
+    },
+    "eefa302f-ac2c-47db-80a1-35b2191b6bfc++9284" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "eefa302f-ac2c-47db-80a1-35b2191b6bfc++7803" : 9223372036854775807,
+    "eefa302f-ac2c-47db-80a1-35b2191b6bfc++9284" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9E1E1B80-767F-47B5-B521-0C6A6C5A8715",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "eefa302f-ac2c-47db-80a1-35b2191b6bfc++7803" : "sellerios\/",
+    "eefa302f-ac2c-47db-80a1-35b2191b6bfc++9284" : "shundaojia5\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "顺道嘉商家版",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "顺道嘉商家版\/顺道嘉商家版.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/121.42.40.122",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "eefa302f-ac2c-47db-80a1-35b2191b6bfc++7803"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.2",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "eefa302f-ac2c-47db-80a1-35b2191b6bfc++9284"
+    }
+  ]
+}
